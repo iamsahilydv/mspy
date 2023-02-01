@@ -21,7 +21,7 @@ const Dashboard = () => {
   const [expirationDate, setExpirationDate] = useState("Oct 8, 2021 5:30 AM");
   const [autoRenew, setAutoRenew] = useState(false);
   const [targetPhone, setTargetPhone] = useState("iPhone");
-  const [mSpyversion, setMSpyversion] = useState("5.8.5");
+  const [vigilversion, setvigilversion] = useState("5.8.5");
   const [imei, setImei] = useState("39023876478372hdfWa");
   const [battery, setBattery] = useState("90%");
   const [wifi, setWifi] = useState(true);
@@ -117,9 +117,9 @@ const Dashboard = () => {
                 {targetPhone}
               </Text>
             </Flex>
-            <Text className={style.text1Detail}>mSpy version:</Text>
+            <Text className={style.text1Detail}>Vigil version:</Text>
             <Text className={style.text2Detail} color={"gray.500"}>
-              {mSpyversion}
+              {vigilversion}
             </Text>
             <Text mt={"10px"} className={style.text1Detail}>
               IMEI:
