@@ -36,7 +36,7 @@ const mapData = [
 const Map = () => {
   return (
     <Stack
-      height={"650px"}
+      height={{ base: "auto", lg: "650px" }}
       width={"98%"}
       margin={"auto"}
       boxSizing={"border-box"}
@@ -45,10 +45,26 @@ const Map = () => {
       boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
       position={"relative"}
     >
-      <Text fontSize={"28px"} mb={"5px"}  >Last Locations</Text>
-      <Flex style={{ height: "100%", width: "100%", margin: "auto" }}>
-        <Box width={"75%"} h={"88%"} border={"1px solid red"} textAlign={"center"}>Space for Map</Box>
-        <Box marginLeft={"20px"}>
+      <Text fontSize={"28px"} mb={"5px"}>
+        Last Locations
+      </Text>
+      <Flex
+        style={{ width: "100%", margin: "auto" }}
+        h={{base:"auto",lg:"600px"}}
+        // border={"1px solid cyan"}
+        direction={{ base: "column", lg: "row" }}
+        gap={"20px"}
+        // mb={"50px"}
+      >
+        <Box
+          width={{ base: "98%", lg: "78%" }}
+          h={{ base: "400px", lg: "95%" }}
+          border={"1px solid red"}
+          textAlign={"center"}
+        >
+          Space for Map
+        </Box>
+        <Box mb={{ base: "35px", lg: "auto" }}>
           {mapData &&
             mapData.map((el) => (
               <Box key={el.id} mb={"30px"}>
@@ -59,9 +75,18 @@ const Map = () => {
               </Box>
             ))}
         </Box>
-
       </Flex>
-      <Text textTransform={"uppercase"} position={"absolute"} fontSize={"18px"} fontWeight={"bold"} right={"50px"} bottom={"20px"} color={"cyan.600"}>All Locations</Text>
+      <Text
+        textTransform={"uppercase"}
+        position={"absolute"}
+        fontSize={"18px"}
+        fontWeight={"bold"}
+        right={"50px"}
+        bottom={"20px"}
+        color={"cyan.600"}
+      >
+        All Locations
+      </Text>
     </Stack>
   );
 };
