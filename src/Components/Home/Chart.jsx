@@ -30,10 +30,18 @@ export const options = {
   plugins: {
     legend: true,
     scales: {
-      y: {
-        min: 0,
-        max: 50,
-      },
+        y: {
+
+          min: 0,
+          max: 50,
+        },
+    //   yAxes: [
+    //     {
+    //       gridLines: {
+    //         color: "rgba(0, 0, 0, 0)",
+    //       },
+    //     },
+    //   ],
     },
   },
 };
@@ -44,7 +52,7 @@ export const data = {
   labels: labels,
   datasets: [
     {
-      label: "Web History",
+      label: "Browser History",
       data: a,
       backgroundColor: "pink",
       borderColor: "pink",
@@ -62,7 +70,7 @@ export const data = {
       tension: "0.1",
     },
     {
-      label: "Web History",
+      label: "Text Message",
       data: c,
       backgroundColor: "gray",
       borderColor: "gray",
@@ -71,7 +79,7 @@ export const data = {
       tension: "0.1",
     },
     {
-      label: "Web History",
+      label: "GPS Location",
       data: d,
       backgroundColor: "red",
       borderColor: "red",
@@ -88,22 +96,25 @@ const Chart = () => {
       h={{ base: "auto", lg: "70vh" }}
       w={"98%"}
       margin={"auto"}
-      //   border={"1px solid red"}
+      mb={"20px"}
+      // border={"1px solid red"}
       p={"20px"}
     >
       <Text height={"6vh"} fontSize={"28px"}>
         Target Device Activity
       </Text>
-      <Box border={"1px solid cyan"} h={"100%"} w={"100%"}>
-        <div className={style.chart}>
-          <Line
-            // border={"1px solid blue"}
-            h={"100%"}
-            w={"100%"}
-            options={options}
-            data={data}
-          ></Line>
-        </div>
+      <Box
+        //   border={"1px solid cyan"}
+        h={"100%"}
+        w={"100%"}
+      >
+        <Line
+          // border={"1px solid blue"}
+          h={"100%"}
+          w={"100%"}
+          options={options}
+          data={data}
+        ></Line>
       </Box>
     </Stack>
   );
