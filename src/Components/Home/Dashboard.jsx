@@ -2,7 +2,6 @@ import {
   Box,
   Button,
   Flex,
-  HStack,
   Stack,
   Switch,
   Text,
@@ -15,6 +14,7 @@ import { IoMdBatteryFull } from "react-icons/io";
 import { MdWifi, MdOutlineNetworkCell } from "react-icons/md";
 import DataDetails from "./DataDetails";
 import Map from "./Map";
+import Chart from "./Chart";
 
 const Dashboard = () => {
   const [accountType, setAccountType] = useState("Premium");
@@ -29,6 +29,9 @@ const Dashboard = () => {
   const [operator, setOperator] = useState("T-Mobile");
   return (
     <Stack style={{ width: "100%" }}>
+      <section>
+        <Chart />
+      </section>
       {/* <Sidebar /> */}
       <section>
         <DataDetails />
