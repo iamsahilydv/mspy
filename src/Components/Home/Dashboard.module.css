@@ -24,10 +24,34 @@
   font-size: 28px;
 }
 .BoxInner {
-  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
-    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 25px;
+    border-radius: 0.375rem;
+    background-color: white;
 }
-/* .chart{
-    border: 1px solid red;
-    height: 100%;
-} */
+.chart {
+  /* border: 1px solid red; */
+  height: 100%;
+  width: 95vw;
+  margin: auto;
+  margin-top: 20px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 25px;
+  border-radius: 0.375rem;
+}
+
+.stack {
+  /* border: 1px solid cyan; */
+  padding: 30px;
+  border-radius: 0.375rem;
+  /* border-radius: 1%; */
+}
+canvas {
+  /* border: 1px solid red; */
+  width: 90vw !important;
+  height: 100% !important;
+  background-color: white;
+}
+
+.icons{
+    background-color: white;
+}

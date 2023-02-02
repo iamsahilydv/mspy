@@ -70,9 +70,16 @@ const DataDetails = () => {
   };
   return (
     <Flex
-      style={{ width: "99%", justifyContent: "space-around",margin:"auto" }}
+      style={{
+        width: "98%",
+        justifyContent: "space-around",
+        margin: "auto",
+        marginBottom: "20px",
+        borderRadius: "0.375rem",
+      }}
       // display={{ base: "inline-block", lg: "flex" }}
-      direction={{base:"column",lg:"row"}}
+      direction={{ base: "column", lg: "row" }}
+      bg={""}
       gap={"20px"}
     >
       <Box
@@ -84,25 +91,43 @@ const DataDetails = () => {
         h={"420px"}
         className={style.BoxInner}
       >
-        <Text noOfLines={"1"} className={style.HeadingDetail}>
+        <Text bg={"white"} noOfLines={"1"} className={style.HeadingDetail}>
           Most Messaging Contacts
         </Text>
 
         {dataMessage &&
           dataMessage.map((el) => (
-            <Box p={"20px"} pb={"0"} position={"relative"} key={el.id}>
-              <Flex justifyContent={"space-between"}>
-                <Box width={"50%"}>
-                  <Text noOfLines={"1"} fontSize={"18px"}>
+            <Box
+              bg={"white"}
+              p={"20px"}
+              pb={"0"}
+              position={"relative"}
+              key={el.id}
+            >
+              <Flex bg={"white"} justifyContent={"space-between"}>
+                <Box bg={"white"} width={"50%"}>
+                  <Text bg={"white"} noOfLines={"1"} fontSize={"18px"}>
                     {el.mobile}
                   </Text>
-                  <Text noOfLines={"1"} color={"gray.500"} mb={"10px"}>
+                  <Text
+                    bg={"white"}
+                    noOfLines={"1"}
+                    color={"gray.500"}
+                    mb={"10px"}
+                  >
                     {el.name}
                   </Text>
                 </Box>
-                <Box color={"gray.500"}>{el.times} times</Box>
+                <Box bg={"white"} color={"gray.500"}>
+                  {el.times} times
+                </Box>
               </Flex>
-              <Progress colorScheme={"cyan"} value={el.times} max={16} />
+              <Progress
+                bg={"white"}
+                colorScheme={"cyan"}
+                value={el.times}
+                max={16}
+              />
             </Box>
           ))}
         <Box
@@ -116,6 +141,7 @@ const DataDetails = () => {
           onClick={() => {
             navigate();
           }}
+          bg={"white"}
         >
           All Messages
         </Box>
@@ -129,25 +155,43 @@ const DataDetails = () => {
         h={"420"}
         className={style.BoxInner}
       >
-        <Text noOfLines={"1"} className={style.HeadingDetail}>
+        <Text bg={"white"} noOfLines={"1"} className={style.HeadingDetail}>
           Most Calling Contacts
         </Text>
 
         {dataCallingContacts &&
           dataCallingContacts.map((el) => (
-            <Box p={"20px"} pb={"0"} position={"relative"} key={el.id}>
-              <Flex justifyContent={"space-between"}>
-                <Box width={"50%"}>
-                  <Text noOfLines={"1"} fontSize={"18px"}>
+            <Box
+              bg={"white"}
+              p={"20px"}
+              pb={"0"}
+              position={"relative"}
+              key={el.id}
+            >
+              <Flex bg={"white"} justifyContent={"space-between"}>
+                <Box bg={"white"} width={"50%"}>
+                  <Text bg={"white"} noOfLines={"1"} fontSize={"18px"}>
                     {el.mobile}
                   </Text>
-                  <Text noOfLines={"1"} color={"gray.500"} mb={"10px"}>
+                  <Text
+                    bg={"white"}
+                    noOfLines={"1"}
+                    color={"gray.500"}
+                    mb={"10px"}
+                  >
                     {el.name}
                   </Text>
                 </Box>
-                <Box color={"gray.500"}>{el.times} times</Box>
+                <Box bg={"white"} color={"gray.500"}>
+                  {el.times} times
+                </Box>
               </Flex>
-              <Progress colorScheme={"green"} value={el.times} max={5} />
+              <Progress
+                bg={"white"}
+                colorScheme={"green"}
+                value={el.times}
+                max={5}
+              />
             </Box>
           ))}
         <Box
@@ -161,6 +205,7 @@ const DataDetails = () => {
           onClick={() => {
             navigate();
           }}
+          bg={"white"}
         >
           All Calls
         </Box>
@@ -174,23 +219,43 @@ const DataDetails = () => {
         h={"420px"}
         className={style.BoxInner}
       >
-        <Text className={style.HeadingDetail}>Most Messaging Contacts</Text>
+        <Text bg={"white"} className={style.HeadingDetail}>
+          Most Messaging Contacts
+        </Text>
 
         {dataViewedWebsite &&
           dataViewedWebsite.map((el) => (
-            <Box p={"20px"} pb={"0"} position={"relative"} key={el.id}>
-              <Flex justifyContent={"space-between"}>
-                <Box width={"50%"}>
-                  <Text noOfLines={"1"} fontSize={"18px"}>
+            <Box
+              bg={"white"}
+              p={"20px"}
+              pb={"0"}
+              position={"relative"}
+              key={el.id}
+            >
+              <Flex bg={"white"} justifyContent={"space-between"}>
+                <Box bg={"white"} width={"50%"}>
+                  <Text bg={"white"} noOfLines={"1"} fontSize={"18px"}>
                     {el.Topic}
                   </Text>
-                  <Text noOfLines={"1"} color={"gray.500"} mb={"10px"}>
+                  <Text
+                    bg={"white"}
+                    noOfLines={"1"}
+                    color={"gray.500"}
+                    mb={"10px"}
+                  >
                     {el.url}
                   </Text>
                 </Box>
-                <Box color={"gray.500"}>{el.times} times</Box>
+                <Box bg={"white"} color={"gray.500"}>
+                  {el.times} times
+                </Box>
               </Flex>
-              <Progress colorScheme={"pink"} value={el.times} max={7} />
+              <Progress
+                bg={"white"}
+                colorScheme={"pink"}
+                value={el.times}
+                max={7}
+              />
             </Box>
           ))}
         <Box
@@ -204,6 +269,7 @@ const DataDetails = () => {
           onClick={() => {
             navigate();
           }}
+          bg={"white"}
         >
           All Websites
         </Box>

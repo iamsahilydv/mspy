@@ -92,31 +92,38 @@ export const data = {
 
 const Chart = () => {
   return (
+    <div className={style.chart}>
     <Stack
+    className={style.stack}
+    bg={"white"}
       h={{ base: "auto", lg: "70vh" }}
       w={"98%"}
       margin={"auto"}
-      mb={"20px"}
-      // border={"1px solid red"}
+      mb={"40px"}
+    //   border={"1px solid red"}
       p={"20px"}
     >
-      <Text height={"6vh"} fontSize={"28px"}>
+      <Text height={"6vh"} fontSize={"28px"} bg={"white"}>
         Target Device Activity
       </Text>
       <Box
-        //   border={"1px solid cyan"}
-        h={"100%"}
-        w={"100%"}
+      display={"flex"}
+      alignSelf={"center"}
+        //   border={"1px solid blue"}
+        h={"90%"}
+        w={"90%"}
       >
         <Line
-          // border={"1px solid blue"}
-          h={"100%"}
-          w={"100%"}
+        className={style.line}
+        //   border={"1px solid orange"}
+        //   h={"100%"}
+        //   w={"100%"}
           options={options}
           data={data}
         ></Line>
       </Box>
     </Stack>
+    </div>
   );
 };
 

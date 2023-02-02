@@ -1,0 +1,12 @@
+.blurBox{
+    /* border: 1px solid red; */
+    height: 100vh;
+    /* background-color: blue; */
+    /* filter: blur(20px); */
+    /* backdrop-filter: blur(20px); */
+}
+.flex{
+    /* background: black; */
+    /* backdrop-filter: blur(20px); */
+
+}
