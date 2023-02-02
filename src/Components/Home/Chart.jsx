@@ -30,18 +30,17 @@ export const options = {
   plugins: {
     legend: true,
     scales: {
-        y: {
-
-          min: 0,
-          max: 50,
-        },
-    //   yAxes: [
-    //     {
-    //       gridLines: {
-    //         color: "rgba(0, 0, 0, 0)",
-    //       },
-    //     },
-    //   ],
+      y: {
+        min: 0,
+        max: 50,
+      },
+      //   yAxes: [
+      //     {
+      //       gridLines: {
+      //         color: "rgba(0, 0, 0, 0)",
+      //       },
+      //     },
+      //   ],
     },
   },
 };
@@ -92,38 +91,43 @@ export const data = {
 
 const Chart = () => {
   return (
-    <div className={style.chart}>
-    <Stack
-    className={style.stack}
-    bg={"white"}
-      h={{ base: "auto", lg: "70vh" }}
-      w={"98%"}
-      margin={"auto"}
-      mb={"40px"}
-    //   border={"1px solid red"}
-      p={"20px"}
+    <Box
+      className={style.chart}
+      // height={{base:"100%"}} w={{base:"90vw",lg:"95vw"}}
     >
-      <Text height={"6vh"} fontSize={"28px"} bg={"white"}>
-        Target Device Activity
-      </Text>
-      <Box
-      display={"flex"}
-      alignSelf={"center"}
-        //   border={"1px solid blue"}
-        h={"90%"}
-        w={"90%"}
+      <Stack
+        className={style.stack}
+        bg={"white"}
+        h={{ base: "auto", lg: "70vh" }}
+        w={"98%"}
+        margin={"auto"}
+        mb={"40px"}
+        //   border={"1px solid red"}
+        boxSizing={"border-box"}
+        p={"20px"}
       >
-        <Line
-        className={style.line}
-        //   border={"1px solid orange"}
-        //   h={"100%"}
-        //   w={"100%"}
-          options={options}
-          data={data}
-        ></Line>
-      </Box>
-    </Stack>
-    </div>
+        <Text height={"6vh"} fontSize={"28px"} bg={"white"}>
+          Target Device Activity
+        </Text>
+        <Box
+          display={"flex"}
+          alignSelf={"center"}
+          //   border={"1px solid blue"}
+          h={"90%"}
+          w={"90%"}
+          // ml={"-30px"}
+        >
+          <Line
+            className={style.line}
+            //   border={"1px solid orange"}
+            //   h={"100%"}
+            //   w={"100%"}
+            options={options}
+            data={data}
+          ></Line>
+        </Box>
+      </Stack>
+    </Box>
   );
 };
 

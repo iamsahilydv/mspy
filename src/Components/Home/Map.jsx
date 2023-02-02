@@ -1,8 +1,5 @@
 import { Box, Flex, Stack, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
-import OsmProvider from "./Osm-Provider";
-import { Marker, Popup } from "react-leaflet";
-import { Map } from "leaflet";
 const mapData = [
   {
     id: 1,
@@ -66,9 +63,11 @@ const Maps = () => {
         <Box bg={"white"}
           width={{ base: "98%", lg: "78%" }}
           h={{ base: "400px", lg: "95%" }}
-          border={"1px solid red"}
+          // border={"1px solid red"}
           textAlign={"center"}
         >
+          {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.4211830048!2d77.00727791507819!3d28.43671728249545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d17e8bfffffff%3A0xdb108da17afb495b!2sBig%20Boy%20Toyz%20Ltd!5e0!3m2!1sen!2sin!4v1675371586871!5m2!1sen!2sin" width="100%" height="100%" ></iframe> */}
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2908.5707158279547!2d-88.72940188451697!3d43.19751757913967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88042b726597ef91%3A0xcc6398cce8337917!2s316%20N%20Washington%20St%2C%20Watertown%2C%20WI%2053094%2C%20USA!5e0!3m2!1sen!2sin!4v1675356698769!5m2!1sen!2sin" allowFullScreen width="100%" height="100%"  loading="lazy"></iframe>
           {/* <Map center={center} zoom={ZOOM_LEVEL}>
             <TileLayer url={OsmProvider.maptiler.url} attribution={OsmProvider.maptiler.attribution} />
           </Map> */}

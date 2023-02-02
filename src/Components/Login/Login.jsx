@@ -39,7 +39,8 @@ const Login = () => {
   };
   const Log = () => {
     let otp = document.getElementById("otp");
-    email===""? alert("Enter a Email"):otp.style.zIndex = "+100";
+    email===""? alert("Enter a Email"):otp.style.zIndex = "50";
+    console.log(email)
     
     console.log(email);
   };
@@ -106,16 +107,17 @@ const Login = () => {
         direction={"column"}
         gap={"20px"}
         // border={"1px solid red"}
-        h={"50vh"}
-        w={"30%"}
+        h={{base:"100%",lg:"50vh"}}
+        w={{base:"100vw",md:"70vw",lg:"30vw"}}
         margin={"auto"}
-        mt={"25vh"}
+        mt={{base:"0",lg:"25vh"}}
         position={"relative"}
       >
         <Image
+        bg={"white"}
           // border={"1px solid cyan"}
           position={"absolute"}
-          top={"8vh"}
+          top={{base:"20vh",lg:"8vh"}}
           left={"0"}
           right={"0"}
           height={"100px"}
@@ -125,7 +127,7 @@ const Login = () => {
           src={logo}
           alt={"logo"}
         />
-        <InputGroup w={"80%"} margin={"auto"} mt={"25vh"}>
+        <InputGroup bg={"white"} w={"80%"} margin={"auto"} mt={{base:"45vh",lg:"20vh"}} border={"1px solid gray"} borderRadius={"0.375rem"}>
           <Input
             margin={"auto"}
             w={"100%"}
@@ -134,10 +136,11 @@ const Login = () => {
             focusBorderColor="gray.400"
             isRequired={true}
             value={email}
+            border={"none"}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <InputLeftElement>
-            <MdEmail fontSize={"22px"} />
+          <InputLeftElement bg={"white"} borderRadius={"0.375rem"}>
+            <MdEmail className={style.icons} fontSize={"22px"} />
           </InputLeftElement>
         </InputGroup>
         <Button
@@ -164,25 +167,27 @@ const Login = () => {
         // backdropBlur={"5px"}
         direction={"column"}
         gap={"20px"}
-        border={"1px solid red"}
-        h={"50vh"}
-        w={"30%"}
+        // border={"1px solid red"}
+        h={{base:"100%",lg:"50vh"}}
+        w={{base:"100vw",md:"70vw",lg:"30vw"}}
         margin={"auto"}
-        mt={"-50vh"}
+        mt={{base:"-100vh",lg:"-50vh"}}
         position={"relative"}
       >
         <Box
           mt={"1vh"}
+          bg={"white"}
           ml={"10px"}
           _hover={{ cursor: "pointer" }}
           onClick={() => {
             back();
           }}
         >
-          <FaArrowLeft fontSize={"22px"} />
+          <FaArrowLeft className={style.icons} fontSize={"22px"} />
         </Box>
         <Image
           // border={"1px solid cyan"}
+          bg={"white"}
           position={"absolute"}
           top={"8vh"}
           left={"0"}
@@ -202,10 +207,11 @@ const Login = () => {
           w={"80%"}
           fontSize={"16px"}
           // border={"1px solid red"}
+          bg={"white"}
         >
-          Verify Your account <Text cursor={"pointer"} color={"navy"}>{email}</Text>
+          Verify Your account <Text bg={"white"} cursor={"pointer"} color={"blue.500"}>{email}</Text>
         </Text>
-        <InputGroup w={"80%"} margin={"auto"} mt={"28vh"}>
+        <InputGroup w={"80%"} bg={"white"}  margin={"auto"} mt={{base:"45vh",lg:"28vh"}} border={"1px solid gray"} borderRadius={"0.375rem"}>
           <Input
           id="otpInput"
           value={otpInp}
@@ -218,8 +224,9 @@ const Login = () => {
             // ml={"10px"}
             focusBorderColor="gray.400"
             isRequired={true}
+            border={"none"}
           />
-          <InputLeftElement></InputLeftElement>
+          
         </InputGroup>
         <Button
           w={"35%"}
