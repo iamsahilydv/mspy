@@ -1,8 +1,5 @@
 import { Box, Flex, Stack, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { MapContainer } from "https://cdn.esm.sh/react-leaflet/MapContainer";
-import { TileLayer } from "https://cdn.esm.sh/react-leaflet/TileLayer";
-import { useMap } from "https://cdn.esm.sh/react-leaflet/hooks";
 import OsmProvider from "./Osm-Provider";
 import { Marker, Popup } from "react-leaflet";
 import { Map } from "leaflet";
@@ -72,9 +69,9 @@ const Maps = () => {
           border={"1px solid red"}
           textAlign={"center"}
         >
-          <Map center={center} zoom={ZOOM_LEVEL}>
+          {/* <Map center={center} zoom={ZOOM_LEVEL}>
             <TileLayer url={OsmProvider.maptiler.url} attribution={OsmProvider.maptiler.attribution} />
-          </Map>
+          </Map> */}
           {/* <MapContainer
             center={[51.505, -0.09]}
             zoom={13}

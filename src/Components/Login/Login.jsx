@@ -105,7 +105,7 @@ const Login = () => {
         // backdropBlur={"5px"}
         direction={"column"}
         gap={"20px"}
-        border={"1px solid red"}
+        // border={"1px solid red"}
         h={"50vh"}
         w={"30%"}
         margin={"auto"}
