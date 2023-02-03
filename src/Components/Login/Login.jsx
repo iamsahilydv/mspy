@@ -1,248 +1,115 @@
 import {
   Box,
   Button,
+  Checkbox,
   Flex,
-  Image,
   Input,
-  InputGroup,
-  InputLeftElement,
+  Stack,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
-import { backIn } from "framer-motion";
-import React, { useState } from "react";
-import {
-  FaArrowLeft,
-} from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
-import logo from "../Image/vigil.png";
+import styled from "@emotion/styled";
 import style from "./Login.module.css";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isOpenAlert, onOpenAlert, onCloseAlert } = useDisclosure();
-  const cancelRef = React.useRef();
-  const [email, setEmail] = useState("");
-  const [otpInp, setOtpInp] = useState("");
-  const navigate = useNavigate()
-
-  let otpValue= "1234"
-  // const [display,setDisplay] = useState("none")
-
-  const verify = ()=>{
-    alert("verification complete")
-    navigate("/home")
-  };
-  const failVerification = () =>{
-    alert("Wrong OTP")
-  };
-  const Log = () => {
-    let otp = document.getElementById("otp");
-    email===""? alert("Enter a Email"):otp.style.zIndex = "50";
-    console.log(email)
-    
-    console.log(email);
-  };
-  const back = () => {
-    let otp = document.getElementById("otp");
-    otp.style.zIndex = "-10";
-  };
-  const Submit = () => {
-    otpInp===otpValue?verify():failVerification()
-    // navigate
-  };
+    const [otpInp,setOtpInp] =useState("")
+    const [email,setEmail] = useState("")
+    const navigate = useNavigate()
+    const otp = "1234"
+    const hide =()=>{
+      alert(`OTP sent to ${email}`)
+      let unhide = document.getElementById("verifyButton");
+      let otpInput= document.getElementById("otpInput")
+      unhide.style.zIndex="10"
+      otpInput.disabled=false
+      
+    }
+    const sendOTP=()=>{
+      email===""?alert("Enter a Email"):hide()
+    }
+    const verifyOTP=()=>{
+      otpInp===otp?navigate("/home"):alert("Wrong OTP")
+    }
   return (
-    <Box className={style.blurBox}>
-      {/* <Button onClick={onOpen}>Login</Button>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent margin={"auto"} height={"50vh"}>
-          <ModalHeader textAlign={"center"}>Login</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody id="modal">
-            <Image
-              height={"100px"}
-              w={"150px"}
-              margin={"auto"}
-              mb={"30px"}
-              src={logo}
-              alt={"logo"}
-            />
-            <InputGroup>
-              <Input
-                w={"100%"}
-                type={"email"}
-                placeholder="Enter Email"
-                focusBorderColor="gray.400"
-                isRequired
-              />
-              <InputLeftElement>
-                <MdEmail fontSize={"22px"} />
-              </InputLeftElement>
-            </InputGroup>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button
-              variant="ghost"
-              colorScheme={"green"}
-              onClick={() => {
-                Log();
-              }}
-            >
-              Send OTP
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal> */}
-      {/* <Login/> */}
-      <Flex
-        zIndex={"0"}
-        className={style.flex}
-        bg={"white"}
-        // filter={"none"}
-        // transform={"translate(-50%,-50%)"}
-        // backdropBlur={"5px"}
-        direction={"column"}
-        gap={"20px"}
-        // border={"1px solid red"}
-        h={{base:"100%",lg:"50vh"}}
-        w={{base:"100vw",md:"70vw",lg:"30vw"}}
+    <Stack
+      bg={"#e5e5e5"}
+      height={"100vh"}
+      width={"100vw"}
+      position={"relative"}
+    >
+      <Box
+      zIndex={"10"}
+        bg={"#e5e5e5"}
+        width={{base:"100%",md:"50%",lg:"30%"}}
+        h={"60vh"}
         margin={"auto"}
-        mt={{base:"0",lg:"25vh"}}
-        position={"relative"}
+        position={"absolute"}
+        top={"0"}
+        bottom={"0"}
+        left={"0"}
+        right={"0"}
+        // border="1px solid red"
       >
-        <Image
-        bg={"white"}
-          // border={"1px solid cyan"}
-          position={"absolute"}
-          top={{base:"20vh",lg:"8vh"}}
-          left={"0"}
-          right={"0"}
-          height={"100px"}
-          w={"150px"}
-          margin={"auto"}
-          // mb={"30px"}
-          src={logo}
-          alt={"logo"}
-        />
-        <InputGroup bg={"white"} w={"80%"} margin={"auto"} mt={{base:"45vh",lg:"20vh"}} border={"1px solid gray"} borderRadius={"0.375rem"}>
+        <Text textAlign={"center"} bg={"#e5e5e5"} color={"#224957"} fontWeight={"bold"} fontSize={"50px"} mb={"30px"}>Sign in</Text>
+        <Text color={"#224957"} textAlign={"center"} bg={"#e5e5e5"}>Sign in and start managing your device</Text>
+        <Box w={"80%"} margin={"auto"} mt={"20px"}>
+          <Text bg={"#e5e5e5"}>Email</Text>
           <Input
-            margin={"auto"}
-            w={"100%"}
-            type={"email"}
-            placeholder="Enter Email"
-            focusBorderColor="gray.400"
-            isRequired={true}
+            color={"white"}
             value={email}
-            border={"none"}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e)=>setEmail(e.target.value)}
+            bg={"#224957"}
+            placeholder={"Email"}
+            type={"email"}
+            _placeholder={{ color: "white" }}
           />
-          <InputLeftElement bg={"white"} borderRadius={"0.375rem"}>
-            <MdEmail className={style.icons} fontSize={"22px"} />
-          </InputLeftElement>
-        </InputGroup>
-        <Button
-          w={"35%"}
-          position={"absolute"}
-          right={"2vw"}
-          bottom={"2vh"}
-          // variant="ghost"
-          colorScheme={"green"}
-          onClick={() => {
-            Log();
-          }}
-        >
-          Send OTP
-        </Button>
-      </Flex>
-      <Flex
-        id="otp"
-        zIndex={"-10"}
-        className={style.flex}
-        bg={"white"}
-        // filter={"none"}
-        // transform={"translate(-50%,-50%)"}
-        // backdropBlur={"5px"}
-        direction={"column"}
-        gap={"20px"}
-        // border={"1px solid red"}
-        h={{base:"100%",lg:"50vh"}}
-        w={{base:"100vw",md:"70vw",lg:"30vw"}}
-        margin={"auto"}
-        mt={{base:"-100vh",lg:"-50vh"}}
-        position={"relative"}
-      >
-        <Box
-          mt={"1vh"}
-          bg={"white"}
-          ml={"10px"}
-          _hover={{ cursor: "pointer" }}
-          onClick={() => {
-            back();
-          }}
-        >
-          <FaArrowLeft className={style.icons} fontSize={"22px"} />
         </Box>
-        <Image
-          // border={"1px solid cyan"}
-          bg={"white"}
-          position={"absolute"}
-          top={"8vh"}
-          left={"0"}
-          right={"0"}
-          height={"100px"}
-          w={"150px"}
-          margin={"auto"}
-          // mb={"30px"}
-          src={logo}
-          alt={"logo"}
-        />
-
-        <Text
-          position={"absolute"}
-          top={"25vh"}
-          left={"3vw"}
-          w={"80%"}
-          fontSize={"16px"}
-          // border={"1px solid red"}
-          bg={"white"}
-        >
-          Verify Your account <Text bg={"white"} cursor={"pointer"} color={"blue.500"}>{email}</Text>
-        </Text>
-        <InputGroup w={"80%"} bg={"white"}  margin={"auto"} mt={{base:"45vh",lg:"28vh"}} border={"1px solid gray"} borderRadius={"0.375rem"}>
+        <Box w={"80%"} margin={"auto"} mt={"20px"}>
+          <Text bg={"#e5e5e5"}>OTP</Text>
           <Input
           id="otpInput"
-          value={otpInp}
-          onChange={(e)=>{setOtpInp(e.target.value)}}
-            margin={"auto"}
-            w={"100%"}
+          isDisabled
+            bg={"#224957"}
+            value={otpInp}
+            onChange={(e)=>setOtpInp(e.target.value)}
+            color={"white"}
+            placeholder={"****"}
             type={"password"}
-            max={"1"}
-            placeholder="Enter OTP"
-            // ml={"10px"}
-            focusBorderColor="gray.400"
-            isRequired={true}
-            border={"none"}
+            pattern={"0-9"}
+            maxLength={4}
+            // minLength={"4"}
+            _placeholder={{ color: "white" }}
           />
-          
-        </InputGroup>
-        <Button
-          w={"35%"}
-          position={"absolute"}
-          right={"2vw"}
-          bottom={"2vh"}
-          // variant="ghost"
-          colorScheme={"green"}
-          onClick={() => {
-            Submit();
-          }}
+        </Box>
+        {/* <Input type={"checkbox"} bg={"white"} size={"sm"} /> */}
+        {/* <input type={"checkbox"} className={style.check} /> */}
+        <Flex
+          bg={"#e5e5e5"}
+          justify={"space-between"}
+          w={"80%"}
+          margin={"auto"}
+          mt={"20px"}
         >
-          Submit
-        </Button>
-      </Flex>
-    </Box>
+          <Checkbox colorScheme='green' iconColor="green" bg={"#e5e5e5"} color={"#224957"}>
+            <Text bg={"#e5e5e5"}>Remember Me</Text>
+          </Checkbox>
+          <Text bg={"#e5e5e5"} cursor={"pointer"}>
+            Didn't Recive OTP
+          </Text>
+        </Flex>
+        <Box bg={"#e5e5e5"} alignItems={"center"} textAlign={"center"} mt={"30px"} position={"relative"}>
+          <Button zIndex={0} left={"0"} right={"0"} margin={"auto"} position={"absolute"} id="otpButton" colorScheme={"green"} color={"#e5e5e5"} width={"80%"} onClick={()=>sendOTP()}>Send OTP</Button>
+          <Button zIndex={-10} left={"0"} right={"0"} margin={"auto"} position={"absolute"} id="verifyButton" colorScheme={"green"} color={"#e5e5e5"} width={"80%"} onClick={()=>verifyOTP()}>Verify OTP</Button>
+        </Box>
+      </Box>
+      {/* <Box> */}
+        <Box bg={"#e5e5e5"} position={"absolute"} margin={"auto"} left={"0"} right={"0"} bottom={"0"} ><svg className={style.svg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319"><path fill="#47e093" fill-opacity="1" d="M0,32L80,58.7C160,85,320,139,480,170.7C640,203,800,213,960,208C1120,203,1280,181,1360,170.7L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg></Box>
+        {/* <Box bg={""} position={"absolute"} margin={"auto"} left={"0"} right={"0"} bottom={"0"}><svg className={style.svg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319"><path fill="#496873" fill-opacity="1" d="M0,288L80,288C160,288,320,288,480,266.7C640,245,800,203,960,160C1120,117,1280,75,1360,53.3L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg></Box> */}
+      {/* </Box> */}
+      
+      
+    </Stack>
   );
 };
 

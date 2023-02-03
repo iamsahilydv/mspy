@@ -1,6 +1,5 @@
 import { Box, Flex, Progress, Text } from "@chakra-ui/react";
 import React from "react";
-import { MdMargin } from "react-icons/md";
 import style from "./Dashboard.module.css";
 
 const dataMessage = [

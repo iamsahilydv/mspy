@@ -8,7 +8,6 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import style from "./Dashboard.module.css";
-import Sidebar from "../Sidebar/Sidebar";
 import { FaMobileAlt } from "react-icons/fa";
 import { IoMdBatteryFull } from "react-icons/io";
 import { MdWifi, MdOutlineNetworkCell } from "react-icons/md";

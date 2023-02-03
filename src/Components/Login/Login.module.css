@@ -8,3 +8,11 @@
 .icons{
     background-color: white;
 }
+.check{
+    height: 50px;
+}
+.svg{
+    background-color: #e5e5e5;
+    /* height: "px"; */
+    /* border: 1px solid red; */
+}
