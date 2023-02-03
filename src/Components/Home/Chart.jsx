@@ -99,10 +99,10 @@ const Chart = () => {
         className={style.stack}
         bg={"white"}
         h={{ base: "auto", lg: "70vh" }}
-        w={"98%"}
+        w={"100%"}
         margin={"auto"}
         mb={"40px"}
-        //   border={"1px solid red"}
+          // border={"1px solid red"}
         boxSizing={"border-box"}
         p={"20px"}
       >
