@@ -324,7 +324,7 @@ const Login = () => {
             width={"80%"}
             onClick={() => sendOTP()}
           >
-            Send OTP
+            Login
           </Button>
           <Button
             zIndex={-10}

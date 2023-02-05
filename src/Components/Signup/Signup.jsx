@@ -90,12 +90,15 @@ const Signup = () => {
           Sign Up
         </Text>
         <Text color={"#224957"} textAlign={"center"} 
-        bg={"#e5e5e5"}
+        // bg={"#e5e5e5"}
+        bg={"transparent"}
         >
           Sign Up and start managing your device
         </Text>
-        <Box w={"80%"} margin={"auto"} mt={"20px"}>
-          <Text bg={"#e5e5e5"}>Email</Text>
+        <Box w={"80%"} margin={"auto"} mt={"20px"} bg={"transparent"}>
+          <Text bg={"transparent"}
+          // bg={"#e5e5e5"}
+          >Email</Text>
           <Input
             color={"white"}
             value={email}
@@ -106,8 +109,13 @@ const Signup = () => {
             _placeholder={{ color: "white" }}
           />
         </Box>
-        <Box w={"80%"} margin={"auto"} mt={"20px"} bg={"#e5e5e5"}>
-          <Text bg={"#e5e5e5"}>Password</Text>
+        <Box w={"80%"} margin={"auto"} mt={"20px"} 
+        // bg={"#e5e5e5"}
+        bg={"transparent"}>
+          <Text 
+          // bg={"#e5e5e5"}
+          bg={"transparent"}
+          >Password</Text>
           <Input
             // id="otpInput"
             // isDisabled
@@ -122,8 +130,14 @@ const Signup = () => {
             // minLength={"4"}
             _placeholder={{ color: "white" }}
           />
-          <Box mt={"20px"} bg={"#e5e5e5"} display={"none"} id="otp">
-            <Text bg={"#e5e5e5"}>OTP</Text>
+          <Box mt={"20px"} 
+          // bg={"#e5e5e5"}
+          bg={"transparent"}
+           display={"none"} id="otp">
+            <Text 
+            // bg={"#e5e5e5"}
+            bg={"transparent"}
+            >OTP</Text>
             <Input
               id="otpInput"
               isDisabled
@@ -143,7 +157,8 @@ const Signup = () => {
         {/* <Input type={"checkbox"} bg={"white"} size={"sm"} /> */}
         {/* <input type={"checkbox"} className={style.check} /> */}
         <Flex
-          bg={"#e5e5e5"}
+          // bg={"#e5e5e5"}
+          bg={"transparent"}
           justify={"center"}
           w={"55%"}
           margin={"auto"}
@@ -168,7 +183,8 @@ const Signup = () => {
           {/* <Text bg={"#e5e5e5"} cursor={"pointer"}> */}
           Didn't Recive OTP &nbsp;
           <Text
-            bg={"#e5e5e5"}
+            // bg={"#e5e5e5"}
+            bg={"transparent"}
             color={"blue.400"}
             cursor={"pointer"}
             onClick={() => alert("OTP is 1234")}
@@ -180,7 +196,8 @@ const Signup = () => {
         <Box
           // border={"1px solid cyan"}
           h={"35px"}
-          bg={"#e5e5e5"}
+          // bg={"#e5e5e5"}
+          bg={"transparent"}
           alignItems={"center"}
           textAlign={"center"}
           mt={"30px"}
@@ -199,7 +216,7 @@ const Signup = () => {
             width={"80%"}
             onClick={() => sendOTP()}
           >
-            Send OTP
+            Signup
           </Button>
           <Button
             zIndex={-10}
@@ -217,7 +234,8 @@ const Signup = () => {
           </Button>
         </Box>
         <Flex
-          bg={"#e5e5e5"}
+          // bg={"#e5e5e5"}
+          bg={"transparent"}
           w={"50%"}
           margin={"auto"}
           mt={"20px"}
@@ -225,7 +243,8 @@ const Signup = () => {
         >
           Already an Account ?{" "}
           <Text
-            bg={"#e5e5e5"}
+            // bg={"#e5e5e5"}
+            bg={"transparent"}
             cursor={"pointer"}
             onClick={() => {
               navigate("/");
@@ -239,7 +258,8 @@ const Signup = () => {
       </Box>
       {/* <Box> */}
       <Box
-        bg={"#e5e5e5"}
+        // bg={"#e5e5e5"}
+        bg={"transparent"}
         position={"absolute"}
         margin={"auto"}
         left={"0"}
