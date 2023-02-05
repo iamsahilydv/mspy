@@ -219,7 +219,7 @@ const DataDetails = () => {
         className={style.BoxInner}
       >
         <Text bg={"white"} className={style.HeadingDetail}>
-          Most Messaging Contacts
+          Most Visited Websites
         </Text>
 
         {dataViewedWebsite &&

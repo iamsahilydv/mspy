@@ -1,0 +1,18 @@
+.blurBox{
+    /* border: 1px solid red; */
+    height: 100vh;
+    /* background-color: blue; */
+    /* filter: blur(20px); */
+    /* backdrop-filter: blur(20px); */
+}
+.icons{
+    background-color: white;
+}
+.check{
+    height: 50px;
+}
+.svg{
+    background-color: #e5e5e5;
+    /* height: "px"; */
+    /* border: 1px solid red; */
+}
