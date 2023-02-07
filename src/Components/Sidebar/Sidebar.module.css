@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* background-color: #29313c; */
+}
+.flex p{
+    background-color: #29313c;
+}
+.flex svg{
+    background-color: #29313c;
+}
+.stack{
+    /* border: 1px solid red; */
+    background-color: #29313c;
+}
+.h2{
+    background-color: #29313c;
+}
+.h2:hover{
+    background-color: #29313c;
+}
+.h2>button:hover{
+    background-color: #29313c;
+}

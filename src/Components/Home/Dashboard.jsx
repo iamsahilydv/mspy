@@ -14,6 +14,7 @@ import { MdWifi, MdOutlineNetworkCell } from "react-icons/md";
 import DataDetails from "./DataDetails";
 import Maps from "./Map";
 import Chart from "./Chart";
+import Header from "../Header/Header";
 
 const Dashboard = () => {
   const [accountType, setAccountType] = useState("Premium");
@@ -27,11 +28,12 @@ const Dashboard = () => {
   const [network, setNetwork] = useState(false);
   const [operator, setOperator] = useState("T-Mobile");
   return (
-    <Stack style={{ width: "100%" }}>
+    <Stack style={{ width: "100%", height:"100vh", overflowY:"scroll" }} >
       {/* <Login /> */}
-      <section>
-        <Chart />
+      <section className={style.headerSection}>
+        <Header  />
       </section>
+      <section><Chart/></section>
       {/* <Sidebar /> */}
       <section>
         <DataDetails />

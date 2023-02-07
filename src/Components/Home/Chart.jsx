@@ -98,7 +98,7 @@ const Chart = () => {
       <Stack
         className={style.stack}
         bg={"white"}
-        h={{ base: "auto", lg: "70vh" }}
+        h={{ base: "auto", lg: "100%" }}
         w={"100%"}
         margin={"auto"}
         mb={"40px"}
@@ -114,7 +114,7 @@ const Chart = () => {
           alignSelf={"center"}
           //   border={"1px solid blue"}
           h={"90%"}
-          w={"90%"}
+          w={"100%"}
           // ml={"-30px"}
         >
           <Line

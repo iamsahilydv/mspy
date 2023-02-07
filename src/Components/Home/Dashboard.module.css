@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  background-color: white;
 }
 
 .FlexMain {
@@ -30,10 +31,11 @@
 }
 .chart {
   /* border: 1px solid red; */
-  height: 100%;
-  width: 97vw;
+  height: 96%;
+  width: 97%;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 15px;
+  /* margin-bottom: 15px; */
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 25px;
   border-radius: 0.375rem;
@@ -54,4 +56,13 @@ canvas {
 
 .icons{
     background-color: white;
+}
+.section{
+  border: 1px solid red;
+  /* height: "90%"; */
+}
+.headerSection{
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }

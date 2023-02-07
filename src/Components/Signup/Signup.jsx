@@ -50,7 +50,7 @@ const Signup = () => {
       body: JSON.stringify(user),
       })
       console.log(user);
-      navigate("/");
+      navigate("/login");
     } catch (er) {}
   };
   const verifyOTP = () => {
@@ -247,7 +247,7 @@ const Signup = () => {
             bg={"transparent"}
             cursor={"pointer"}
             onClick={() => {
-              navigate("/");
+              navigate("/login");
             }}
             display={"flex"}
             color={"blue.400"}

@@ -8,12 +8,15 @@ import {
   Text,
 } from "@chakra-ui/react";
 import style from "./Login.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LoginContext from "../../Context/LoginContext";
+
 
 const url = "https://busy-houndstooth-clam.cyclic.app/employee";
 
 const Login = () => {
+  const {loginStatus,setLoginStatus} = useContext(LoginContext)
   let getUserData = async () => {
     try {
       let res = await fetch(url);
@@ -49,7 +52,10 @@ const Login = () => {
   };
   const success = () => {
     alert("Login successful!");
-    navigate("/home");
+    setLoginStatus(true)
+    console.log(loginStatus)
+    localStorage.setItem("Login",JSON.stringify(!loginStatus))
+    navigate("/");
   };
   const failure = () => {
     if (attempt !== 3) {
