@@ -1,6 +1,6 @@
 import "./App.css";
 import Dashboard from "./Components/Home/Dashboard";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
 import { Box, Flex } from "@chakra-ui/react";
@@ -11,6 +11,7 @@ import Sidebar from "./Components/Sidebar/Sidebar";
 
 function App() {
   const { loginStatus } = useContext(LoginContext);
+  const navigate = useNavigate();
   return (
     <div className="App">
       {/* <Routes>
@@ -24,10 +25,13 @@ function App() {
       </Flex> */}
       {console.log(loginStatus)}
       {loginStatus === false ? (
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
-        </Routes>
+        <Box>
+          {navigate("/login")}
+          <Routes>
+            <Route path="/login" index element={<Login />} />
+            <Route path="signup" element={<Signup />} />
+          </Routes>
+        </Box>
       ) : (
         <Flex>
           <Box position={"sticky"} width={"20%"} h={"100vh"} bg={"#29313c"}>
