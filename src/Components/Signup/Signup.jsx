@@ -51,7 +51,9 @@ const Signup = () => {
       })
       console.log(user);
       navigate("/login");
-    } catch (er) {}
+    } catch (er) {
+      console.log(er)
+    }
   };
   const verifyOTP = () => {
     otpInp === otp ? success() : alert("Wrong OTP");

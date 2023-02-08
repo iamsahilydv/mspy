@@ -6,14 +6,17 @@ import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import LoginState from "./Context/LoginState";
+import SizeState from "./Context/SizeState";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <ChakraProvider>
+      <SizeState>
       <LoginState>
         <App />
       </LoginState>
+      </SizeState>
     </ChakraProvider>
   </BrowserRouter>
 );

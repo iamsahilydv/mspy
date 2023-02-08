@@ -6,7 +6,7 @@ import {
   Switch,
   Text,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import style from "./Dashboard.module.css";
 import { FaMobileAlt } from "react-icons/fa";
 import { IoMdBatteryFull } from "react-icons/io";
@@ -15,6 +15,7 @@ import DataDetails from "./DataDetails";
 import Maps from "./Map";
 import Chart from "./Chart";
 import Header from "../Header/Header";
+import SizeContext from "../../Context/SizeContext";
 
 const Dashboard = () => {
   const [accountType, setAccountType] = useState("Premium");
@@ -27,6 +28,9 @@ const Dashboard = () => {
   const [wifi, setWifi] = useState(true);
   const [network, setNetwork] = useState(false);
   const [operator, setOperator] = useState("T-Mobile");
+  // let {width} = useContext(SizeContext)
+
+  // console.log(width)
   return (
     <Stack style={{ width: "100%", height:"100vh", overflowY:"scroll" }} >
       {/* <Login /> */}

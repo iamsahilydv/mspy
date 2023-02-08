@@ -72,7 +72,8 @@ const Header = () => {
           color={"white"}
           onClick={() => {
             localStorage.setItem("Login",JSON.stringify(Login))
-            navigate("/login");
+            alert("Logout Successfuly!")
+            navigate("/");
             window.location.reload()
           }}
         >

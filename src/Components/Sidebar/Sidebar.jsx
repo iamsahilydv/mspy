@@ -11,7 +11,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import style from "./Sidebar.module.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SiKik, SiTinder } from "react-icons/si";
 import { BiBookmark, BiHistory, BiPhone, BiVideo } from "react-icons/bi";
 import { ImHangouts } from "react-icons/im";
@@ -239,7 +239,16 @@ const Restricted = [
 
 const Sidebar = () => {
   const [userID, setUserID] = useState("0001");
+  const [width,setWidth] =useState(window.innerWidth)
 
+  const handleSize = () => {
+    setWidth(window.innerWidth);
+  };
+  // console.log(width)
+const small = ()=>{
+  return;
+}
+const large =()=>{
   return (
     <Stack
       color={"gray.500"}
@@ -498,6 +507,16 @@ const Sidebar = () => {
         </Accordion>
       </Stack>
     </Stack>
+  )
+}
+
+  useEffect(() => {
+    window.addEventListener("resize", handleSize);
+    return () => window.removeEventListener("resize", handleSize);
+  }, []);
+
+  return (
+    width >= 1280 ? large():small()
   );
 };
 

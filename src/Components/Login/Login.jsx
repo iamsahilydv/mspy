@@ -54,7 +54,7 @@ const Login = () => {
     alert("Login successful!");
     setLoginStatus(true)
     console.log(loginStatus)
-    localStorage.setItem("Login",JSON.stringify(!loginStatus))
+    localStorage.setItem("Login",JSON.stringify(loginStatus))
     navigate("/");
   };
   const failure = () => {
