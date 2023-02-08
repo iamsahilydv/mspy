@@ -11,7 +11,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import style from "./Sidebar.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SiKik, SiTinder } from "react-icons/si";
 import { BiBookmark, BiHistory, BiPhone, BiVideo } from "react-icons/bi";
 import { ImHangouts } from "react-icons/im";
@@ -44,6 +44,7 @@ import { useNavigate } from "react-router-dom";
 import SidebarSubContent from "./SidebarSubContent";
 import { FaSnapchat, FaViber } from "react-icons/fa";
 import logo from "../Image/vigil.png";
+import SizeContext from "../../Context/SizeContext";
 const ScreenRecorder = [
   {
     id: 1,
@@ -52,7 +53,7 @@ const ScreenRecorder = [
     path: "/screen-recorder",
   },
 ];
-const GeneralFeatures = [
+export const GeneralFeatures = [
   {
     id: 1,
     text: "Contacts",
@@ -239,12 +240,7 @@ const Restricted = [
 
 const Sidebar = () => {
   const [userID, setUserID] = useState("0001");
-  const [width,setWidth] =useState(window.innerWidth)
-
-  const handleSize = () => {
-    setWidth(window.innerWidth);
-  };
-  // console.log(width)
+const {width} =useContext(SizeContext)
 const small = ()=>{
   return;
 }
@@ -510,10 +506,7 @@ const large =()=>{
   )
 }
 
-  useEffect(() => {
-    window.addEventListener("resize", handleSize);
-    return () => window.removeEventListener("resize", handleSize);
-  }, []);
+  
 
   return (
     width >= 1280 ? large():small()

@@ -12,11 +12,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginContext from "../../Context/LoginContext";
 
-
 const url = "https://busy-houndstooth-clam.cyclic.app/employee";
 
 const Login = () => {
-  const {loginStatus,setLoginStatus} = useContext(LoginContext)
+  const { loginStatus, setLoginStatus } = useContext(LoginContext);
   let getUserData = async () => {
     try {
       let res = await fetch(url);
@@ -50,13 +49,18 @@ const Login = () => {
     email: "1",
     password: "2",
   };
+  const changeStatus =()=>{
+    setLoginStatus(true);
+  }
   const success = () => {
     alert("Login successful!");
-    setLoginStatus(true)
+    changeStatus()
     console.log(loginStatus)
-    localStorage.setItem("Login",JSON.stringify(loginStatus))
+    localStorage.setItem("Login", JSON.stringify(loginStatus));
     navigate("/");
+    // window.location.reload()
   };
+  const nav = () => {};
   const failure = () => {
     if (attempt !== 3) {
       alert(`Wrong OTP ${3 - attempt} are remaning`);
@@ -147,7 +151,8 @@ const Login = () => {
   };
   useEffect(() => {
     getUserData();
-  }, []);
+    changeStatus()
+  }, [loginStatus]);
   return (
     <Stack
       bg={"#e5e5e5"}

@@ -16,7 +16,7 @@ const AllRoutes = () => {
         path="/"
         element={
           <PrivateRoute>
-            {width <= 1280 ? (
+            {width < 1280 ? (
               <Dashboard />
             ) : (
               <Flex>

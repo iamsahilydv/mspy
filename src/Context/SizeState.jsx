@@ -7,7 +7,7 @@ const SizeState = (props) => {
     const handleSize = () => {
         setWidth(window.innerWidth);
     };
-    console.log(width)
+    // console.log(width)
     useEffect(() => {
         window.addEventListener("resize", handleSize);
         return () => window.removeEventListener("resize", handleSize);
