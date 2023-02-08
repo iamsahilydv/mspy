@@ -67,17 +67,16 @@ const Header = () => {
           <Text alignSelf={"center"} textAlign={"center"} fontSize={"28px"}>
             <HamburgerIcon ref={btnRef} onClick={onOpen} />
             <Drawer
-            
-              // isOpen={isOpen}
-              // placement="right"
-              // onClose={onClose}
-              // finalFocusRef={btnRef}
-              // size={"full"}
+              isOpen={isOpen}
+              placement="right"
+              onClose={onClose}
+              finalFocusRef={btnRef}
+              size={"full"}
             >
-              <DrawerOverlay  />
-              <DrawerContent >
+              <DrawerOverlay />
+              <DrawerContent>
                 <DrawerHeader w={"100%"}>
-                  <Flex 
+                  <Flex
                     position={"relative"}
                     // border={"1px solid red"}
                     justifyContent={"space-between"}
@@ -129,8 +128,8 @@ const Header = () => {
                   </Flex>
                 </DrawerHeader>
 
-                <DrawerBody color={"gray.500"} >
-                {GeneralFeatures &&
+                <DrawerBody color={"gray.500"}>
+                  {/* {GeneralFeatures &&
                   GeneralFeatures.map((el) => (
                     <SidebarSubContent
                       key={el.id}
@@ -138,14 +137,22 @@ const Header = () => {
                       path={el.path}
                       icon={el.icon}
                     />
-                  ))}
+                  ))} */}
                 </DrawerBody>
 
                 <DrawerFooter>
-                  <Button variant="outline" mr={3} onClick={onClose}>
-                    Cancel
+                  <Button
+                    colorScheme="red"
+                    w={"100%"}
+                    onClick={() => {
+                      localStorage.setItem("Login", JSON.stringify(Login));
+                      alert("Logout Successfuly!");
+                      navigate("/");
+                      window.location.reload();
+                    }}
+                  >
+                    Logout
                   </Button>
-                  <Button colorScheme="blue">Save</Button>
                 </DrawerFooter>
               </DrawerContent>
             </Drawer>
