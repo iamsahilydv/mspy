@@ -12,6 +12,7 @@ import {
   Flex,
   Image,
   Input,
+  Stack,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -19,8 +20,9 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SizeContext from "../../Context/SizeContext";
 import logo from "../Image/vigil.png";
-import { GeneralFeatures } from "../Sidebar/Sidebar";
+import { GeneralFeatures,SocialNetworks } from "../Sidebar/Sidebar";
 import SidebarSubContent from "../Sidebar/SidebarSubContent";
+import Drawer1 from "./Drawer";
 // import LoginState from "";
 import style from "./Header.module.css";
 const Login = false;
@@ -47,7 +49,7 @@ const Header = () => {
           h={"100%"}
           // border={"1px solid red"}
         >
-          <Image w={"90%"} h={"100%"} ml={"10%"} src={logo} />
+          <Image w={"90%"} h={"100%"} ml={"10%"} src={logo} alt={"logo"} />
         </Box>
         <Box
           fontSize={"22px"}
@@ -57,7 +59,7 @@ const Header = () => {
           bg={"transparent"}
           textAlign={"center"}
         >
-          <Text>{currentPage}</Text>
+          <Text noOfLines={1}>{currentPage}</Text>
         </Box>
         <Box
           w={{ base: "25%", md: "17%", lg: "11%" }}
@@ -90,8 +92,8 @@ const Header = () => {
                     >
                       <Image w={"90%"} h={"100%"} ml={"10%"} src={logo} />
                     </Box>
-                    <Box w={"30%"}>
-                      {/* <Box
+                    {/* <Box w={"30%"}>
+                      <Box
                         position={"absolute"}
                         margin={"auto"}
                         zIndex={"0"}
@@ -103,7 +105,7 @@ const Header = () => {
                         border={"1px solid #2ecc71"}
                         h={"50%"}
                         w={"30%"}
-                      ></Box> */}
+                      ></Box>
                       <Box
                         alignSelf={"center"}
                         zIndex={"10"}
@@ -121,26 +123,86 @@ const Header = () => {
                       >
                         I want discount
                       </Box>
-                    </Box>
+                    </Box> */}
                     <Box w={{ base: "25%", md: "17%", lg: "11%" }} h={"100%"}>
                       <DrawerCloseButton />
                     </Box>
                   </Flex>
                 </DrawerHeader>
 
-                <DrawerBody color={"gray.500"}>
-                  {/* {GeneralFeatures &&
-                  GeneralFeatures.map((el) => (
-                    <SidebarSubContent
-                      key={el.id}
-                      name={el.text}
-                      path={el.path}
-                      icon={el.icon}
-                    />
-                  ))} */}
-                </DrawerBody>
+                <DrawerBody
+                  // overflowY={"scroll"}
+                  // border={"1px solid red"}
+                  pb={"100px"}
+                  color={"gray.500"}
+                >
 
-                <DrawerFooter>
+                  <Box as="span"
+                  cursor={"pointer"}
+                  h={"50px"}
+                    flex="1"
+                    textAlign="left"
+                    // bg={"#29313c"}
+                    textTransform={"uppercase"}
+                    ml={"20px"}
+                    fontWeight={"bold"}
+                    noOfLines={1} mt={"20px"} mb={"20px"} fontSize={"25px"} onClick={() => {
+                      navigate("/");
+                    }}>
+                    Dashboard
+                  </Box>
+                  <Box>
+                  <Box
+                    as="span"
+                    flex="1"
+                    textAlign="left"
+                    // bg={"#29313c"}
+                    textTransform={"uppercase"}
+                    ml={"20px"}
+                    fontWeight={"bold"}
+                    noOfLines={1}
+                  >
+                    General Fetures
+                  </Box>
+                  <Stack>
+                  {GeneralFeatures &&
+                    GeneralFeatures.map((el) => (
+                      <Drawer1
+                        key={el.id}
+                        name={el.text}
+                        path={el.path}
+                        icon={el.icon}
+                      />
+                    ))}
+                  </Stack>
+                  </Box>
+                   <Box mt={"20px"} mb={"20px"}>
+                   <Box
+                    // border={"1px solid red"}
+                    as="span"
+                    flex="1"
+                    textAlign="left"
+                    // bg={"#29313c"}
+                    textTransform={"uppercase"}
+                    ml={"20px"}
+                    mt={"20px"}
+                    fontWeight={"bold"}
+                    noOfLines={1}
+                  >
+                    Social Networks
+                  </Box>
+                  <Stack>
+                  {SocialNetworks &&
+                    SocialNetworks.map((el) => (
+                      <Drawer1
+                        key={el.id}
+                        name={el.text}
+                        path={el.path}
+                        icon={el.icon}
+                      />
+                    ))}
+                  </Stack>
+                   </Box>
                   <Button
                     colorScheme="red"
                     w={"100%"}
@@ -153,6 +215,21 @@ const Header = () => {
                   >
                     Logout
                   </Button>
+                </DrawerBody>
+
+                <DrawerFooter >
+                  {/* <Button
+                    colorScheme="red"
+                    w={"100%"}
+                    onClick={() => {
+                      localStorage.setItem("Login", JSON.stringify(Login));
+                      alert("Logout Successfuly!");
+                      navigate("/");
+                      window.location.reload();
+                    }}
+                  >
+                    Logout
+                  </Button> */}
                 </DrawerFooter>
               </DrawerContent>
             </Drawer>
@@ -181,7 +258,7 @@ const Header = () => {
           w={"30%"}
           bg={"transparent"}
         >
-          <Text>{currentPage}</Text>
+          <Text noOfLines={1}>{currentPage}</Text>
         </Box>
         <Box
           position={"absolute"}

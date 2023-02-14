@@ -45,7 +45,7 @@ import SidebarSubContent from "./SidebarSubContent";
 import { FaSnapchat, FaViber } from "react-icons/fa";
 import logo from "../Image/vigil.png";
 import SizeContext from "../../Context/SizeContext";
-const ScreenRecorder = [
+export const ScreenRecorder = [
   {
     id: 1,
     text: "Screen Recorder",
@@ -115,7 +115,7 @@ export const GeneralFeatures = [
     path: "/installed-apps",
   },
 ];
-const Locations = [
+export const Locations = [
   {
     id: 1,
     text: "GPS Locations",
@@ -129,7 +129,7 @@ const Locations = [
     path: "/geo-fencing",
   },
 ];
-const SocialNetworks = [
+export const SocialNetworks = [
   {
     id: 1,
     text: "Whatsapp",
@@ -197,7 +197,7 @@ const SocialNetworks = [
     path: "/facebook",
   },
 ];
-const InternetUsage = [
+export const InternetUsage = [
   {
     id: 1,
     text: "Browser History",
@@ -217,7 +217,7 @@ const InternetUsage = [
     path: "/email",
   },
 ];
-const Restricted = [
+export const Restricted = [
   {
     id: 1,
     text: "Block WiFi",
@@ -240,40 +240,13 @@ const Restricted = [
 
 const Sidebar = () => {
   const [userID, setUserID] = useState("0001");
-const {width} =useContext(SizeContext)
-const small = ()=>{
-  return;
-}
-const large =()=>{
-  return (
-    <Stack
-      color={"gray.500"}
-      width={"100%"}
-      height={"100vh"}
-      // border={"1px solid cyan"}
-      bg={"#29313c"}
-      overflowY={"scroll"}
-      className={style.stack}
-    >
-      <Flex
-        // border={"1px solid red"}
-        justifyContent={"space-between"}
-        bg={"#01b0fe"}
-        style={{ width: "100%", height: "3.5rem" }}
-      >
-        <Box w={"40%"} bg={"transparent"}>
-          <Image bg={"transparent"} h={"100%"} w={"100%"} src={logo} />
-        </Box>
-        <Box
-          color={"white"}
-          bg={"transparent"}
-          mr={"10px"}
-          alignSelf={"center"}
-          // border={"1px solid red"}
-        >
-          Your ID: {userID}
-        </Box>
-      </Flex>
+  const { width } = useContext(SizeContext);
+  const navigate = useNavigate()
+  const small = () => {
+    return;
+  };
+  const large = () => {
+    return (
       <Stack
         color={"gray.500"}
         width={"100%"}
@@ -283,234 +256,273 @@ const large =()=>{
         overflowY={"scroll"}
         className={style.stack}
       >
-        <Accordion
-          _hover={{ backgroundColor: "#29323c" }}
-          bg={"#29313c"}
-          defaultIndex={[0]}
-          allowMultiple
-          border={"none"}
+        <Flex
+          // border={"1px solid red"}
+          justifyContent={"space-between"}
+          bg={"#01b0fe"}
+          style={{ width: "100%", height: "3.5rem" }}
         >
-          <AccordionItem
-            bg={"#29313c"}
-            border={"none"}
-            _hover={{ backgroundColor: "#29313c" }}
+          <Box w={"40%"} bg={"transparent"}>
+            <Image bg={"transparent"} h={"100%"} w={"100%"} src={logo} alt={"logo"} />
+          </Box>
+          <Box
+            color={"white"}
+            bg={"transparent"}
+            mr={"10px"}
+            alignSelf={"center"}
+            // border={"1px solid red"}
           >
-            <h2 className={style.h2}>
-              <AccordionButton bg={"#29313c"}>
-                <Box
-                  as="span"
-                  flex="1"
-                  textAlign="left"
-                  bg={"#29313c"}
-                  textTransform={"uppercase"}
-                  ml={"20px"}
-                  fontWeight={"bold"}
-                >
-                  General Fetures
-                </Box>
-                <AccordionIcon bg={"#29313c"} />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4} bg={"#29313c"}>
-              <Stack bg={"#29313c"}>
-                {GeneralFeatures &&
-                  GeneralFeatures.map((el) => (
-                    <SidebarSubContent
-                      key={el.id}
-                      name={el.text}
-                      path={el.path}
-                      icon={el.icon}
-                    />
-                  ))}
-              </Stack>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem
+            Your ID: {userID}
+          </Box>
+        </Flex>
+        <Box
+          backgroundColor={"#29313c"}
+          cursor={"pointer"}
+          fontSize={"25px"}
+          w={"100%"}
+          p={"10px"}
+          boxSizing={"border-box"}
+          alignSelf={"center"}
+          h={"3.5rem"}
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Dashboard
+        </Box>
+        <Stack
+          color={"gray.500"}
+          width={"100%"}
+          height={"100vh"}
+          // border={"1px solid cyan"}
+          bg={"#29313c"}
+          overflowY={"scroll"}
+          className={style.stack}
+        >
+          <Accordion
+            _hover={{ backgroundColor: "#29323c" }}
             bg={"#29313c"}
+            defaultIndex={[0]}
+            allowMultiple
             border={"none"}
-            _hover={{ backgroundColor: "#29313c" }}
           >
-            <h2 className={style.h2}>
-              <AccordionButton bg={"#29313c"}>
-                <Box
-                  as="span"
-                  flex="1"
-                  textAlign="left"
-                  bg={"#29313c"}
-                  textTransform={"uppercase"}
-                  ml={"20px"}
-                  fontWeight={"bold"}
-                >
-                  Locations
-                </Box>
-                <AccordionIcon bg={"#29313c"} />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4} bg={"#29313c"}>
-              <Stack bg={"#29313c"}>
-                {Locations &&
-                  Locations.map((el) => (
-                    <SidebarSubContent
-                      key={el.id}
-                      name={el.text}
-                      path={el.path}
-                      icon={el.icon}
-                    />
-                  ))}
-              </Stack>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem
-            bg={"#29313c"}
-            border={"none"}
-            _hover={{ backgroundColor: "#29313c" }}
-          >
-            <h2 className={style.h2}>
-              <AccordionButton bg={"#29313c"}>
-                <Box
-                  as="span"
-                  flex="1"
-                  textAlign="left"
-                  bg={"#29313c"}
-                  textTransform={"uppercase"}
-                  ml={"20px"}
-                  fontWeight={"bold"}
-                >
-                  Social Networks
-                </Box>
-                <AccordionIcon bg={"#29313c"} />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4} bg={"#29313c"}>
-              <Stack bg={"#29313c"}>
-                {SocialNetworks &&
-                  SocialNetworks.map((el) => (
-                    <SidebarSubContent
-                      key={el.id}
-                      name={el.text}
-                      path={el.path}
-                      icon={el.icon}
-                    />
-                  ))}
-              </Stack>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem
-            bg={"#29313c"}
-            border={"none"}
-            _hover={{ backgroundColor: "#29313c" }}
-          >
-            <h2 className={style.h2}>
-              <AccordionButton bg={"#29313c"}>
-                <Box
-                  as="span"
-                  flex="1"
-                  textAlign="left"
-                  bg={"#29313c"}
-                  textTransform={"uppercase"}
-                  ml={"20px"}
-                  fontWeight={"bold"}
-                >
-                  Screen Recorder
-                </Box>
-                <AccordionIcon bg={"#29313c"} />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4} bg={"#29313c"}>
-              <Stack bg={"#29313c"}>
-                {ScreenRecorder &&
-                  ScreenRecorder.map((el) => (
-                    <SidebarSubContent
-                      key={el.id}
-                      name={el.text}
-                      path={el.path}
-                      icon={el.icon}
-                    />
-                  ))}
-              </Stack>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem
-            bg={"#29313c"}
-            border={"none"}
-            _hover={{ backgroundColor: "#29313c" }}
-          >
-            <h2 className={style.h2}>
-              <AccordionButton bg={"#29313c"}>
-                <Box
-                  as="span"
-                  flex="1"
-                  textAlign="left"
-                  bg={"#29313c"}
-                  textTransform={"uppercase"}
-                  ml={"20px"}
-                  fontWeight={"bold"}
-                >
-                  Internet Usage
-                </Box>
-                <AccordionIcon bg={"#29313c"} />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4} bg={"#29313c"}>
-              <Stack bg={"#29313c"}>
-                {InternetUsage &&
-                  InternetUsage.map((el) => (
-                    <SidebarSubContent
-                      key={el.id}
-                      name={el.text}
-                      path={el.path}
-                      icon={el.icon}
-                    />
-                  ))}
-              </Stack>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem
-            bg={"#29313c"}
-            border={"none"}
-            _hover={{ backgroundColor: "#29313c" }}
-          >
-            <h2 className={style.h2}>
-              <AccordionButton bg={"#29313c"}>
-                <Box
-                  as="span"
-                  flex="1"
-                  textAlign="left"
-                  bg={"#29313c"}
-                  textTransform={"uppercase"}
-                  ml={"20px"}
-                  fontWeight={"bold"}
-                >
-                  Restricted
-                </Box>
-                <AccordionIcon bg={"#29313c"} />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4} bg={"#29313c"}>
-              <Stack bg={"#29313c"}>
-                {Restricted &&
-                  Restricted.map((el) => (
-                    <SidebarSubContent
-                      key={el.id}
-                      name={el.text}
-                      path={el.path}
-                      icon={el.icon}
-                    />
-                  ))}
-              </Stack>
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
+            <AccordionItem
+              bg={"#29313c"}
+              border={"none"}
+              _hover={{ backgroundColor: "#29313c" }}
+            >
+              <h2 className={style.h2}>
+                <AccordionButton bg={"#29313c"}>
+                  <Box
+                    as="span"
+                    flex="1"
+                    textAlign="left"
+                    bg={"#29313c"}
+                    textTransform={"uppercase"}
+                    ml={"20px"}
+                    fontWeight={"bold"}
+                  >
+                    General Fetures
+                  </Box>
+                  <AccordionIcon bg={"#29313c"} />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4} bg={"#29313c"}>
+                <Stack bg={"#29313c"}>
+                  {GeneralFeatures &&
+                    GeneralFeatures.map((el) => (
+                      <SidebarSubContent
+                        key={el.id}
+                        name={el.text}
+                        path={el.path}
+                        icon={el.icon}
+                      />
+                    ))}
+                </Stack>
+              </AccordionPanel>
+            </AccordionItem>
+            <AccordionItem
+              bg={"#29313c"}
+              border={"none"}
+              _hover={{ backgroundColor: "#29313c" }}
+            >
+              <h2 className={style.h2}>
+                <AccordionButton bg={"#29313c"}>
+                  <Box
+                    as="span"
+                    flex="1"
+                    textAlign="left"
+                    bg={"#29313c"}
+                    textTransform={"uppercase"}
+                    ml={"20px"}
+                    fontWeight={"bold"}
+                  >
+                    Locations
+                  </Box>
+                  <AccordionIcon bg={"#29313c"} />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4} bg={"#29313c"}>
+                <Stack bg={"#29313c"}>
+                  {Locations &&
+                    Locations.map((el) => (
+                      <SidebarSubContent
+                        key={el.id}
+                        name={el.text}
+                        path={el.path}
+                        icon={el.icon}
+                      />
+                    ))}
+                </Stack>
+              </AccordionPanel>
+            </AccordionItem>
+            <AccordionItem
+              bg={"#29313c"}
+              border={"none"}
+              _hover={{ backgroundColor: "#29313c" }}
+            >
+              <h2 className={style.h2}>
+                <AccordionButton bg={"#29313c"}>
+                  <Box
+                    as="span"
+                    flex="1"
+                    textAlign="left"
+                    bg={"#29313c"}
+                    textTransform={"uppercase"}
+                    ml={"20px"}
+                    fontWeight={"bold"}
+                  >
+                    Social Networks
+                  </Box>
+                  <AccordionIcon bg={"#29313c"} />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4} bg={"#29313c"}>
+                <Stack bg={"#29313c"}>
+                  {SocialNetworks &&
+                    SocialNetworks.map((el) => (
+                      <SidebarSubContent
+                        key={el.id}
+                        name={el.text}
+                        path={el.path}
+                        icon={el.icon}
+                      />
+                    ))}
+                </Stack>
+              </AccordionPanel>
+            </AccordionItem>
+            <AccordionItem
+              bg={"#29313c"}
+              border={"none"}
+              _hover={{ backgroundColor: "#29313c" }}
+            >
+              <h2 className={style.h2}>
+                <AccordionButton bg={"#29313c"}>
+                  <Box
+                    as="span"
+                    flex="1"
+                    textAlign="left"
+                    bg={"#29313c"}
+                    textTransform={"uppercase"}
+                    ml={"20px"}
+                    fontWeight={"bold"}
+                  >
+                    Screen Recorder
+                  </Box>
+                  <AccordionIcon bg={"#29313c"} />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4} bg={"#29313c"}>
+                <Stack bg={"#29313c"}>
+                  {ScreenRecorder &&
+                    ScreenRecorder.map((el) => (
+                      <SidebarSubContent
+                        key={el.id}
+                        name={el.text}
+                        path={el.path}
+                        icon={el.icon}
+                      />
+                    ))}
+                </Stack>
+              </AccordionPanel>
+            </AccordionItem>
+            <AccordionItem
+              bg={"#29313c"}
+              border={"none"}
+              _hover={{ backgroundColor: "#29313c" }}
+            >
+              <h2 className={style.h2}>
+                <AccordionButton bg={"#29313c"}>
+                  <Box
+                    as="span"
+                    flex="1"
+                    textAlign="left"
+                    bg={"#29313c"}
+                    textTransform={"uppercase"}
+                    ml={"20px"}
+                    fontWeight={"bold"}
+                  >
+                    Internet Usage
+                  </Box>
+                  <AccordionIcon bg={"#29313c"} />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4} bg={"#29313c"}>
+                <Stack bg={"#29313c"}>
+                  {InternetUsage &&
+                    InternetUsage.map((el) => (
+                      <SidebarSubContent
+                        key={el.id}
+                        name={el.text}
+                        path={el.path}
+                        icon={el.icon}
+                      />
+                    ))}
+                </Stack>
+              </AccordionPanel>
+            </AccordionItem>
+            <AccordionItem
+              bg={"#29313c"}
+              border={"none"}
+              _hover={{ backgroundColor: "#29313c" }}
+            >
+              <h2 className={style.h2}>
+                <AccordionButton bg={"#29313c"}>
+                  <Box
+                    as="span"
+                    flex="1"
+                    textAlign="left"
+                    bg={"#29313c"}
+                    textTransform={"uppercase"}
+                    ml={"20px"}
+                    fontWeight={"bold"}
+                  >
+                    Restricted
+                  </Box>
+                  <AccordionIcon bg={"#29313c"} />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4} bg={"#29313c"}>
+                <Stack bg={"#29313c"}>
+                  {Restricted &&
+                    Restricted.map((el) => (
+                      <SidebarSubContent
+                        key={el.id}
+                        name={el.text}
+                        path={el.path}
+                        icon={el.icon}
+                      />
+                    ))}
+                </Stack>
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+        </Stack>
       </Stack>
-    </Stack>
-  )
-}
+    );
+  };
 
-  
-
-  return (
-    width >= 1280 ? large():small()
-  );
+  return width >= 1280 ? large() : small();
 };
 
 export default Sidebar;

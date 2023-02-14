@@ -106,7 +106,7 @@ const Chart = () => {
         boxSizing={"border-box"}
         p={"20px"}
       >
-        <Text height={"6vh"} fontSize={"28px"} bg={"white"}>
+        <Text height={"6vh"} fontSize={"28px"} bg={"white"} noOfLines={1}>
           Target Device Activity
         </Text>
         <Box

@@ -1,0 +1,16 @@
+.messageBoxSelf::before{
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 0;
+    border-top: 10px solid #01b0fe;
+    border-right: 10px solid transparent;
+}
+.messageBoxOther::before{
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 0;
+    border-top: 10px solid #eeedf0;
+    border-left: 10px solid transparent;
+}
