@@ -182,14 +182,17 @@ const Contacts = () => {
                 </Box>
               ))}
           </Box>
-          <Box border={"1px solid red"} w={"75%"}>
+          <Box
+            // border={"1px solid red"}
+            w={"75%"}
+          >
             <Box
               w={"20%"}
               fontSize={"150px"}
               m={"auto"}
               textAlign={"center"}
               alignItems={"center"}
-              border={"1px solid cyan"}
+              // border={"1px solid cyan"}
             >
               <Box
                 // border={"1px solid cyan"}
@@ -205,11 +208,26 @@ const Contacts = () => {
               </Box>
             </Box>
             <Box w={"70%"} m={"auto"} mt={"30px"} lineHeight={"30px"}>
-                <Text noOfLines={1} textAlign={"center"} fontSize={"22px"} fontWeight={"bold"}>{currentContact.name}</Text>
-                <Text noOfLines={1} mt={"20px"}>Numbers :</Text>
-                <Text noOfLines={1} color={"gray.500"}>{currentContact.number}</Text>
-                <Text noOfLines={1} mt={"20px"}>Email :</Text>
-                <Text noOfLines={1} color={"gray.500"}>{currentContact.email}</Text>
+              <Text
+                noOfLines={1}
+                textAlign={"center"}
+                fontSize={"22px"}
+                fontWeight={"bold"}
+              >
+                {currentContact.name}
+              </Text>
+              <Text noOfLines={1} mt={"20px"}>
+                Numbers :
+              </Text>
+              <Text noOfLines={1} color={"gray.500"}>
+                {currentContact.number}
+              </Text>
+              <Text noOfLines={1} mt={"20px"}>
+                Email :
+              </Text>
+              <Text noOfLines={1} color={"gray.500"}>
+                {currentContact.email}
+              </Text>
             </Box>
           </Box>
         </Flex>

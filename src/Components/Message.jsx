@@ -6,7 +6,7 @@ import style from "./Message.module.css";
 const ContactsData = [
   {
     id: 1,
-    name: "Matty",
+    name: "",
     number: 3459209123,
     message: [
       {
@@ -67,6 +67,7 @@ const ContactsData = [
         date: 6,
         month: "Apr",
         year: "2021",
+        format: "AM",
         sender: "Self",
       },
       {
@@ -75,6 +76,7 @@ const ContactsData = [
         time: 10.5,
         date: 6,
         month: "Apr",
+        format: "AM",
         year: "2021",
         sender: "Self",
       },
@@ -84,6 +86,7 @@ const ContactsData = [
         time: 10.5,
         date: 6,
         month: "Apr",
+        format: "AM",
         year: "2021",
         sender: "Other",
       },
@@ -93,6 +96,7 @@ const ContactsData = [
         time: 10.5,
         date: 6,
         month: "Apr",
+        format: "AM",
         year: "2021",
         sender: "Self",
       },
@@ -102,112 +106,124 @@ const ContactsData = [
         time: 10.5,
         date: 6,
         month: "Apr",
+        format: "AM",
         year: "2021",
         sender: "Other",
       },
     ],
-    image: "",
+    senderImage: "",
   },
-  //   {
-  //     id: 2,
-  //     name: "",
-  //     number: 3487422201,
-  //     messageSelf: [
-  //       {
-  //         id: 1,
-  //         message: "idk, maybe in an hour or so",
-  //         time: 10.5,
-  //         date: 6,
-  //         month: "Apr",
-  //         year: 2021,
-  //         format: "AM",
-  //       },
-  //       {
-  //         id: 2,
-  //         message: "idk, maybe in an hour or so",
-  //         time: 10.5,
-  //         date: 6,
-  //         month: "Apr",
-  //         year: 2021,
-  //         format: "AM",
-  //       },
-  //       {
-  //         id: 3,
-  //         message: "idk, maybe in an hour or so",
-  //         time: 10.5,
-  //         date: 6,
-  //         month: "Apr",
-  //         year: 2021,
-  //         format: "AM",
-  //       },
-  //       {
-  //         id: 4,
-  //         message: "idk, maybe in an hour or so",
-  //         time: 10.5,
-  //         date: 6,
-  //         month: "Apr",
-  //         year: 2021,
-  //         format: "AM",
-  //       },
-  //       {
-  //         id: 5,
-  //         message: "idk, maybe in an hour or so",
-  //         time: 10.5,
-  //         date: 6,
-  //         month: "Apr",
-  //         year: 2021,
-  //         format: "AM",
-  //       },
-  //     ],
-  //     messageFront: [
-  //       {
-  //         id: 1,
-  //         message: "idk, maybe in an hour or so",
-  //         time: 10.5,
-  //         date: 6,
-  //         month: "Apr",
-  //         year: 2021,
-  //         format: "AM",
-  //       },
-  //       {
-  //         id: 2,
-  //         message: "idk, maybe in an hour or so",
-  //         time: 10.5,
-  //         date: 6,
-  //         month: "Apr",
-  //         year: 2021,
-  //         format: "AM",
-  //       },
-  //       {
-  //         id: 3,
-  //         message: "idk, maybe in an hour or so",
-  //         time: 10.5,
-  //         date: 6,
-  //         month: "Apr",
-  //         year: 2021,
-  //         format: "AM",
-  //       },
-  //       {
-  //         id: 4,
-  //         message: "idk, maybe in an hour or so",
-  //         time: 10.5,
-  //         date: 6,
-  //         month: "Apr",
-  //         year: 2021,
-  //         format: "AM",
-  //       },
-  //       {
-  //         id: 5,
-  //         message: "idk, maybe in an hour or so",
-  //         time: 10.5,
-  //         date: 6,
-  //         month: "Apr",
-  //         year: 2021,
-  //         format: "AM",
-  //       },
-  //     ],
-  //     image: "",
-  //   },
+  {
+    id: 2,
+    name: "Sahil",
+    number: 3459209123,
+    message: [
+      {
+        id: 1,
+        message: "kabdfkabfklbafa afbjkqbef",
+        time: 10.5,
+        date: 6,
+        month: "Apr",
+        year: 2021,
+        format: "AM",
+        sender: "Self",
+      },
+      {
+        id: 2,
+        message: "idk, maybe in an hour or so 2",
+        time: 10.5,
+        date: 6,
+        month: "Apr",
+        year: 2021,
+        format: "AM",
+        sender: "Self",
+      },
+      {
+        id: 3,
+        message: "idk, maybe in an hour or so 3",
+        time: 10.5,
+        date: 6,
+        month: "Apr",
+        year: 2021,
+        format: "AM",
+        sender: "Other",
+      },
+      {
+        id: 4,
+        message: "idk, maybe in an hour or so 4",
+        time: 10.5,
+        date: 6,
+        month: "Apr",
+        year: 2021,
+        format: "AM",
+        sender: "Other",
+      },
+      {
+        id: 5,
+        message: "idk, maybe in an hour or so 5",
+        time: 10.5,
+        date: 6,
+        month: "Apr",
+        year: 2021,
+        format: "AM",
+        sender: "Other",
+      },
+
+      {
+        id: 6,
+        message: "idk, maybe in an hour or so 6",
+        time: 10.5,
+        date: 6,
+        month: "Apr",
+        year: "2021",
+        format: "AM",
+        sender: "Self",
+      },
+      {
+        id: 7,
+        message: "idk, maybe in an hour or so 7",
+        time: 10.5,
+        date: 6,
+        month: "Apr",
+        format: "AM",
+        year: "2021",
+        sender: "Self",
+      },
+      {
+        id: 8,
+        message: "idk, maybe in an hour or so  8",
+        time: 10.5,
+        date: 6,
+        month: "Apr",
+        format: "AM",
+        year: "2021",
+        sender: "Other",
+      },
+      {
+        id: 9,
+        message: "idk, maybe in an hour or so  9",
+        time: 10.5,
+        date: 6,
+        month: "Apr",
+        format: "AM",
+        year: "2021",
+        sender: "Self",
+      },
+      {
+        id: 10,
+        message:
+          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae voluptates culpa earum! Eligendi tenetur nisi sed, natus voluptas cum cupiditate perspiciatis itaque! Officiis adipisci, facere deserunt est voluptatibus iure sed.",
+        time: 10.5,
+        date: 6,
+        month: "Apr",
+        format: "AM",
+        year: "2021",
+        sender: "Other",
+      },
+    ],
+    senderImage:
+      "https://scontent-del1-1.xx.fbcdn.net/v/t39.30808-6/312251150_3372126473059677_7540396173560198222_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=pAIBvTSvm_YAX8jYjPM&_nc_ht=scontent-del1-1.xx&oh=00_AfC4XhAarrezs7X8n7ACM3l7TaXYA3k2QEhh8EbhLIoF2Q&oe=640A383A",
+  },
   //   {
   //     id: 3,
   //     name: "D",
@@ -684,7 +700,7 @@ const Message = () => {
   const [messagessData, setMessagesData] = useState(ContactsData);
   const [currentMessgae, setCurrentMessage] = useState(messagessData[0]);
   //   const [currentName,setCurrentName]= useState(currentContact.name)
-  console.log(currentMessgae);
+  // console.log(currentMessgae);
   const changeProfile = (el) => {
     // console.log(el)
     setCurrentMessage(el);
@@ -702,7 +718,7 @@ const Message = () => {
         <Flex
           w={"98%"}
           mt={"10px"}
-          //   border={"1px solid red"}
+          // border={"1px solid red"}
           height={"90vh"}
           boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
           m={"auto"}
@@ -753,6 +769,7 @@ const Message = () => {
                       // border={"1px solid red"}
                       lineHeight={"18px"}
                       alignItems={"center"}
+                      key={el.id}
                     >
                       {el.name}
                     </Text>
@@ -767,21 +784,21 @@ const Message = () => {
                     mr={5}
                     ml={"20%"}
                   >
-                    {console.log(el)}
+                    {/* {console.log(el)} */}
                     {el.message[0].month},{el.message[0].date},
                     {el.message[0].year} {el.message[0].time}{" "}
                     {el.message[0].format}
                   </Text>
                 </Box>
               ))}
-            <Box
+            {/* <Box
               height={"10%"}
               w={"100%"}
-              border={"1px solid #eeedf0"}
+              border={"1px solid red"}
               position={"absolute"}
               bottom={"0"}
               bg={"#eeedf0"}
-            ></Box>
+            ></Box> */}
           </Box>
           <Box
             //   border={"1px solid red"}
@@ -888,47 +905,127 @@ const Message = () => {
               ))} */}
             {currentMessgae.message &&
               currentMessgae.message.map((el) => (
-                <Box>
+                <Box key={el.id}>
                   {el.sender === "Self" ? (
-                    <Box
-                      position={"relative"}
-                      className={style.messageBoxSelf}
-                      color={"white"}
-                      bg={"#01b0fe"}
+                    <Flex
+                      w={"70%"}
+                      // border={"1px solid red"}
                       ml={"30%"}
-                      //   border={"1px solid red"}
-                      mb={4}
-                      mr={5}
-                      p={2}
                     >
-                      <Text bg={"transparent"} mb={5}>
-                        {el.message}
-                      </Text>
-                      <Text
-                        bg={"transparent"}
-                        textAlign={"right"}
+                      <Box
+                        w={"93%"}
+                        position={"relative"}
+                        className={style.messageBoxSelf}
+                        color={"white"}
+                        bg={"#01b0fe"}
+                        //   border={"1px solid red"}
+                        mb={4}
                         mr={5}
-                        noOfLines={1}
+                        p={2}
                       >
-                        {el.month},{el.date},{el.year} {el.time} {el.format}
-                      </Text>
-                    </Box>
+                        <Text bg={"transparent"} mb={5}>
+                          {el.message}
+                        </Text>
+                        <Text
+                          bg={"transparent"}
+                          textAlign={"right"}
+                          mr={5}
+                          noOfLines={1}
+                        >
+                          {el.month},{el.date},{el.year} {el.time} {el.format}
+                        </Text>
+                      </Box>
+                      <Box
+                        w={"7%"}
+                        h={"100%"}
+                        // alignSelf={"center"}
+                        // border={"1px solid cyan"}
+                        mr={2}
+                      >
+                        <Text
+                          // border={"1px solid red"}
+                          borderRadius={"50%"}
+                          textAlign={"center"}
+                          fontSize={"10px"}
+                          w={"100%"}
+                          h={"100%"}
+                          bg={"#eeedf0"}
+                        >
+                          <IoMdPerson className={style.image} />
+                        </Text>
+                        {/* {currentMessgae.image === "" ? (
+                          <Text
+                            // border={"1px solid red"}
+                            borderRadius={"50%"}
+                            textAlign={"center"}
+                            fontSize={"10px"}
+                            w={"100%"}
+                            h={"100%"}
+                            bg={"#eeedf0"}
+                          >
+                            <IoMdPerson className={style.image} />
+                          </Text>
+                        ) : (
+                          <Image src={currentMessgae.image} />
+                        )} */}
+                      </Box>
+                    </Flex>
                   ) : (
-                    <Flex>
+                    <Flex
+                      w={"70%"}
+                      // border={"1px solid red"}
+                      mr={"30%"}
+                    >
+                      <Box
+                        w={"7%"}
+                        h={"100%"}
+                        // alignSelf={"center"}
+                        // border={"1px solid cyan"}
+                        ml={2}
+                      >
+                        {currentMessgae.senderImage === "" ? (
+                          <Text
+                            // border={"1px solid red"}
+                            borderRadius={"50%"}
+                            textAlign={"center"}
+                            w={"100%"}
+                            h={"100%"}
+                            bg={"#eeedf0"}
+                          >
+                            <IoMdPerson className={style.image} />
+                          </Text>
+                        ) : (
+                          <Image
+                            borderRadius={"50%"}
+                            textAlign={"center"}
+                            fontSize={"10px"}
+                            w={"100%"}
+                            h={"100%"}
+                            src={currentMessgae.senderImage}
+                          />
+                        )}
+                      </Box>
                       <Box
                         position={"relative"}
                         className={style.messageBoxOther}
                         color={"black"}
                         bg={"#eeedf0"}
-                        mr={"30%"}
-                        //   border={"1px solid red"}
+                        // mr={"30%"}
+                        // border={"1px solid red"}
                         mb={4}
                         ml={5}
                         p={2}
+                        w={"100%"}
                       >
-                        <Text bg={"transparent"} fontWeight={"bold"} mb={2}>
-                          {currentMessgae.name}
-                        </Text>
+                        {currentMessgae.name === "" ? (
+                          <Text bg={"transparent"} fontWeight={"bold"} mb={2}>
+                            {currentMessgae.number}
+                          </Text>
+                        ) : (
+                          <Text bg={"transparent"} fontWeight={"bold"} mb={2}>
+                            {currentMessgae.name}
+                          </Text>
+                        )}
                         <Text bg={"transparent"} mb={5}>
                           {el.message}
                         </Text>

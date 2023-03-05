@@ -17,10 +17,12 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import React, { useContext, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import RouteTextContext from "../../Context/RouteTextContext";
 import SizeContext from "../../Context/SizeContext";
 import logo from "../Image/vigil.png";
-import { GeneralFeatures,SocialNetworks } from "../Sidebar/Sidebar";
+import { GeneralFeatures,  } from "../Sidebar/Sidebar";
 import SidebarSubContent from "../Sidebar/SidebarSubContent";
 import Drawer1 from "./Drawer";
 // import LoginState from "";
@@ -30,11 +32,22 @@ const Login = false;
 const Header = () => {
   const { width } = useContext(SizeContext);
   // console.log(width)
-  const [currentPage, setCurrentPage] = useState("Dashboard");
+  const { currentPage, setCurrentPage,setPage } = useContext(RouteTextContext);
   // const { setLoginStatus } = useContext(LoginState);
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+
+  // Text Function
+
+
+  
+
+  useEffect(() => {
+    setPage()
+  }, [window.location.href]);
+
+  // Text function
   const small = () => {
     return (
       <Flex
@@ -136,73 +149,79 @@ const Header = () => {
                   pb={"100px"}
                   color={"gray.500"}
                 >
-
-                  <Box as="span"
-                  cursor={"pointer"}
-                  h={"50px"}
+                  <Box
+                    as="span"
+                    cursor={"pointer"}
+                    h={"50px"}
                     flex="1"
                     textAlign="left"
                     // bg={"#29313c"}
                     textTransform={"uppercase"}
                     ml={"20px"}
                     fontWeight={"bold"}
-                    noOfLines={1} mt={"20px"} mb={"20px"} fontSize={"25px"} onClick={() => {
+                    noOfLines={1}
+                    mt={"20px"}
+                    mb={"20px"}
+                    fontSize={"25px"}
+                    onClick={() => {
+                      setCurrentPage("Dashboard");
                       navigate("/");
-                    }}>
+                    }}
+                  >
                     Dashboard
                   </Box>
                   <Box>
-                  <Box
-                    as="span"
-                    flex="1"
-                    textAlign="left"
-                    // bg={"#29313c"}
-                    textTransform={"uppercase"}
-                    ml={"20px"}
-                    fontWeight={"bold"}
-                    noOfLines={1}
-                  >
-                    General Fetures
+                    <Box
+                      as="span"
+                      flex="1"
+                      textAlign="left"
+                      // bg={"#29313c"}
+                      textTransform={"uppercase"}
+                      ml={"20px"}
+                      fontWeight={"bold"}
+                      noOfLines={1}
+                    >
+                      General Fetures
+                    </Box>
+                    <Stack>
+                      {GeneralFeatures &&
+                        GeneralFeatures.map((el) => (
+                          <Drawer1
+                            key={el.id}
+                            name={el.text}
+                            path={el.path}
+                            icon={el.icon}
+                          />
+                        ))}
+                    </Stack>
                   </Box>
-                  <Stack>
-                  {GeneralFeatures &&
-                    GeneralFeatures.map((el) => (
-                      <Drawer1
-                        key={el.id}
-                        name={el.text}
-                        path={el.path}
-                        icon={el.icon}
-                      />
-                    ))}
-                  </Stack>
-                  </Box>
-                   <Box mt={"20px"} mb={"20px"}>
-                   <Box
-                    // border={"1px solid red"}
-                    as="span"
-                    flex="1"
-                    textAlign="left"
-                    // bg={"#29313c"}
-                    textTransform={"uppercase"}
-                    ml={"20px"}
-                    mt={"20px"}
-                    fontWeight={"bold"}
-                    noOfLines={1}
-                  >
-                    Social Networks
-                  </Box>
-                  <Stack>
-                  {SocialNetworks &&
-                    SocialNetworks.map((el) => (
-                      <Drawer1
-                        key={el.id}
-                        name={el.text}
-                        path={el.path}
-                        icon={el.icon}
-                      />
-                    ))}
-                  </Stack>
-                   </Box>
+                  {/* <Box mt={"20px"} mb={"20px"}>
+                    <Box
+                      // border={"1px solid red"}
+                      as="span"
+                      flex="1"
+                      textAlign="left"
+                      // bg={"#29313c"}
+                      textTransform={"uppercase"}
+                      ml={"20px"}
+                      mt={"20px"}
+                      fontWeight={"bold"}
+                      noOfLines={1}
+                    >
+                      Social Networks
+                    </Box>
+                    <Stack>
+                      {SocialNetworks &&
+                        SocialNetworks.map((el) => (
+                          <Drawer1
+                            key={el.id}
+                            name={el.text}
+                            path={el.path}
+                            icon={el.icon}
+                          />
+                        ))}
+                    </Stack>
+                  </Box> */}
                   <Button
                     colorScheme="red"
                     w={"100%"}
@@ -217,7 +236,7 @@ const Header = () => {
                   </Button>
                 </DrawerBody>
 
-                <DrawerFooter >
+                <DrawerFooter>
                   {/* <Button
                     colorScheme="red"
                     w={"100%"}

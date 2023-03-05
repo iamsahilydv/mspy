@@ -1,10 +1,18 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import React from "react";
+import { useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import RouteTextContext from "../../Context/RouteTextContext";
 import style from "./Sidebar.module.css";
 
 const SidebarSubContent = ({ icon, name, path }) => {
   const navigate = useNavigate();
+  const {currentPage,setPage}= useContext(RouteTextContext)
+
+  useEffect(()=>{
+    setPage()
+  },[window.location.href])
   return (
     <Box
       fontSize={"18px"}
@@ -20,6 +28,8 @@ const SidebarSubContent = ({ icon, name, path }) => {
         // justifyContent={"space-between"}
         cursor={"pointer"}
         onClick={() => {
+          // setPage()
+          // console.log("clicked")
           navigate(path);
         }}
       >

@@ -1,63 +1,77 @@
-import {
-  Box,
-  Button,
-  Checkbox,
-  Flex,
-  Input,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Input, Stack, Text } from "@chakra-ui/react";
 import style from "./Signup.module.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const [otpInp, setOtpInp] = useState("");
   const [email, setEmail] = useState("");
   const [passInp, setPassInp] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [name, setName] = useState("");
   const navigate = useNavigate();
   const otp = "1234";
-  const url ="https://busy-houndstooth-clam.cyclic.app/employee"
-  const hide = () => {
-    alert(`OTP sent to ${email}`);
-    let unhide = document.getElementById("verifyButton");
-    let sendOTPAgain = document.getElementById("sendOTPAgain");
-    let otpInput = document.getElementById("otpInput");
-    let otpHide = document.getElementById("otp");
-    unhide.style.zIndex = "10";
-    otpInput.disabled = false;
-    sendOTPAgain.style.display = "flex";
-    // otpHide.style.marginTop="20px"
-    otpHide.style.display = "block";
-  };
-  const sendOTP = () => {
+  const url = "https://loginpage-production.up.railway.app/register";
+  // const hide = () => {
+  //   alert(`OTP sent to ${email}`);
+  //   let unhide = document.getElementById("verifyButton");
+  //   let sendOTPAgain = document.getElementById("sendOTPAgain");
+  //   let otpInput = document.getElementById("otpInput");
+  //   let otpHide = document.getElementById("otp");
+  //   unhide.style.zIndex = "10";
+  //   otpInput.disabled = false;
+  //   sendOTPAgain.style.display = "flex";
+  //   // otpHide.style.marginTop="20px"
+  //   otpHide.style.display = "block";
+  // };
+  const signup = async () => {
     // console.log(email,passInp)
-    email === "" || passInp === ""
-      ? alert("Enter a Email or Password")
-      : hide();
-  };
-  const success = async () => {
+    // email === "" || passInp === ""
+    //   ? alert("Enter a Email or Password")
+    //   : hide();
+    let obj = {
+      name: name,
+      email: email,
+      phone: mobile,
+      password: passInp,
+    };
+    obj = JSON.stringify(obj);
+    console.log(obj);
     try {
-      const user={
-        email:email,
-        password:passInp
-      }
-      fetch(url,{
+      let res = await fetch(url, {
         method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-      })
-      console.log(user);
-      navigate("/login");
-    } catch (er) {
-      console.log(er)
+        body: obj,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      res = await res.json();
+      console.log(res);
+    } catch (err) {
+      console.log(err);
     }
   };
-  const verifyOTP = () => {
-    otpInp === otp ? success() : alert("Wrong OTP");
-  };
+  // const success = async () => {
+  //   try {
+  //     const user = {
+  //       email: email,
+  //       password: passInp,
+  //     };
+  //     fetch(url, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(user),
+  //     });
+  //     console.log(user);
+  //     navigate("/login");
+  //   } catch (er) {
+  //     console.log(er);
+  //   }
+  // };
+  // const verifyOTP = () => {
+  //   otpInp === otp ? success() : alert("Wrong OTP");
+  // };
   return (
     <Stack
       bg={"#e5e5e5"}
@@ -71,7 +85,7 @@ const Signup = () => {
         // bg={"#e5e5e5"}
         bg={"transparent"}
         width={{ base: "100%", md: "50%", lg: "30%" }}
-        h={"65vh"}
+        h={{ base: "90%", md: "80%", lg: "70%" }}
         margin={"auto"}
         position={"absolute"}
         top={"0"}
@@ -91,16 +105,21 @@ const Signup = () => {
         >
           Sign Up
         </Text>
-        <Text color={"#224957"} textAlign={"center"} 
-        // bg={"#e5e5e5"}
-        bg={"transparent"}
+        <Text
+          color={"#224957"}
+          textAlign={"center"}
+          // bg={"#e5e5e5"}
+          bg={"transparent"}
         >
           Sign Up and start managing your device
         </Text>
         <Box w={"80%"} margin={"auto"} mt={"20px"} bg={"transparent"}>
-          <Text bg={"transparent"}
-          // bg={"#e5e5e5"}
-          >Email</Text>
+          <Text
+            bg={"transparent"}
+            // bg={"#e5e5e5"}
+          >
+            Email
+          </Text>
           <Input
             color={"white"}
             value={email}
@@ -111,13 +130,19 @@ const Signup = () => {
             _placeholder={{ color: "white" }}
           />
         </Box>
-        <Box w={"80%"} margin={"auto"} mt={"20px"} 
-        // bg={"#e5e5e5"}
-        bg={"transparent"}>
-          <Text 
+        <Box
+          w={"80%"}
+          margin={"auto"}
+          mt={"20px"}
           // bg={"#e5e5e5"}
           bg={"transparent"}
-          >Password</Text>
+        >
+          <Text
+            // bg={"#e5e5e5"}
+            bg={"transparent"}
+          >
+            Password
+          </Text>
           <Input
             // id="otpInput"
             // isDisabled
@@ -132,14 +157,83 @@ const Signup = () => {
             // minLength={"4"}
             _placeholder={{ color: "white" }}
           />
-          <Box mt={"20px"} 
+        </Box>
+        <Box
+          w={"80%"}
+          margin={"auto"}
+          mt={"20px"}
           // bg={"#e5e5e5"}
           bg={"transparent"}
-           display={"none"} id="otp">
-            <Text 
+        >
+          <Text
             // bg={"#e5e5e5"}
             bg={"transparent"}
-            >OTP</Text>
+          >
+            Mobile No.
+          </Text>
+          <Input
+            // id="otpInput"
+            // isDisabled
+            bg={"#224957"}
+            value={mobile}
+            onChange={(e) => setMobile(e.target.value)}
+            color={"white"}
+            placeholder={"Mobile No."}
+            type={"tel"}
+            // pattern={"0-9"}
+            // maxLength={4}
+            // minLength={"4"}
+            _placeholder={{ color: "white" }}
+          />
+        </Box>
+        <Box
+          w={"80%"}
+          margin={"auto"}
+          mt={"20px"}
+          // bg={"#e5e5e5"}
+          bg={"transparent"}
+        >
+          <Text
+            // bg={"#e5e5e5"}
+            bg={"transparent"}
+          >
+            Name
+          </Text>
+          <Input
+            // id="otpInput"
+            // isDisabled
+            bg={"#224957"}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            color={"white"}
+            placeholder={"Name"}
+            type={"text"}
+            pattern={"0-9"}
+            // maxLength={4}
+            // minLength={"4"}
+            _placeholder={{ color: "white" }}
+          />
+        </Box>
+        {/* <Box
+          w={"80%"}
+          margin={"auto"}
+          mt={"20px"}
+          // bg={"#e5e5e5"}
+          bg={"transparent"}
+        >
+          <Box
+            mt={"20px"}
+            // bg={"#e5e5e5"}
+            bg={"transparent"}
+            display={"none"}
+            id="otp"
+          >
+            <Text
+              // bg={"#e5e5e5"}
+              bg={"transparent"}
+            >
+              OTP
+            </Text>
             <Input
               id="otpInput"
               isDisabled
@@ -155,10 +249,10 @@ const Signup = () => {
               _placeholder={{ color: "gray.500" }}
             />
           </Box>
-        </Box>
+        </Box> */}
         {/* <Input type={"checkbox"} bg={"white"} size={"sm"} /> */}
         {/* <input type={"checkbox"} className={style.check} /> */}
-        <Flex
+        {/* <Flex
           // bg={"#e5e5e5"}
           bg={"transparent"}
           justify={"center"}
@@ -174,15 +268,7 @@ const Signup = () => {
           id="sendOTPAgain"
           display={"none"}
         >
-          {/* <Checkbox
-            colorScheme="green"
-            iconColor="green"
-            bg={"#e5e5e5"}
-            color={"#224957"}
-          >
-            <Text bg={"#e5e5e5"}>Remember Me</Text>
-          </Checkbox> */}
-          {/* <Text bg={"#e5e5e5"} cursor={"pointer"}> */}
+          
           Didn't Recive OTP &nbsp;
           <Text
             // bg={"#e5e5e5"}
@@ -193,8 +279,8 @@ const Signup = () => {
           >
             Send Again!
           </Text>
-          {/* </Text> */}
-        </Flex>
+          
+        </Flex> */}
         <Box
           // border={"1px solid cyan"}
           h={"35px"}
@@ -216,36 +302,27 @@ const Signup = () => {
             colorScheme={"green"}
             color={"#e5e5e5"}
             width={"80%"}
-            onClick={() => sendOTP()}
+            onClick={() => signup()}
           >
             Signup
-          </Button>
-          <Button
-            zIndex={-10}
-            left={"0"}
-            right={"0"}
-            margin={"auto"}
-            position={"absolute"}
-            id="verifyButton"
-            colorScheme={"green"}
-            color={"#e5e5e5"}
-            width={"80%"}
-            onClick={() => verifyOTP()}
-          >
-            Verify OTP
           </Button>
         </Box>
         <Flex
           // bg={"#e5e5e5"}
           bg={"transparent"}
-          w={"50%"}
+          w={{ base: "80%", lg: "60%" }}
           margin={"auto"}
           mt={"20px"}
-          justifyContent={"space-around"}
+          justifyContent={"center"}
         >
           Already an Account ?{" "}
-          <Text
+          <span
             // bg={"#e5e5e5"}
+            style={{
+              backgroundColor: "transparent",
+              cursor: "pointer",
+              color: "blue",
+            }}
             bg={"transparent"}
             cursor={"pointer"}
             onClick={() => {
@@ -255,7 +332,7 @@ const Signup = () => {
             color={"blue.400"}
           >
             Login
-          </Text>
+          </span>
         </Flex>
       </Box>
       {/* <Box> */}
@@ -275,7 +352,7 @@ const Signup = () => {
         >
           <path
             fill="#47e093"
-            fill-opacity="1"
+            fillOpacity="1"
             d="M0,32L80,58.7C160,85,320,139,480,170.7C640,203,800,213,960,208C1120,203,1280,181,1360,170.7L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
           ></path>
         </svg>

@@ -45,6 +45,7 @@ import SidebarSubContent from "./SidebarSubContent";
 import { FaSnapchat, FaViber } from "react-icons/fa";
 import logo from "../Image/vigil.png";
 import SizeContext from "../../Context/SizeContext";
+import RouteTextContext from "../../Context/RouteTextContext";
 export const ScreenRecorder = [
   {
     id: 1,
@@ -96,18 +97,18 @@ export const GeneralFeatures = [
     icon: <MdWifi />,
     path: "/wifi-networks",
   },
-  {
-    id: 8,
-    text: "Keyword tracking",
-    icon: <MdKeyboardHide />,
-    path: "/keyword-tracking",
-  },
-  {
-    id: 9,
-    text: "Keylogger",
-    icon: <MdKeyboard />,
-    path: "/keylogger",
-  },
+  // {
+  //   id: 8,
+  //   text: "Keyword tracking",
+  //   icon: <MdKeyboardHide />,
+  //   path: "/keyword-tracking",
+  // },
+  // {
+  //   id: 9,
+  //   text: "Keylogger",
+  //   icon: <MdKeyboard />,
+  //   path: "/keylogger",
+  // },
   {
     id: 10,
     text: "Installed APPs",
@@ -129,74 +130,74 @@ export const Locations = [
     path: "/geo-fencing",
   },
 ];
-export const SocialNetworks = [
-  {
-    id: 1,
-    text: "Whatsapp",
-    icon: <BsWhatsapp bg={"#29313c"} />,
-    path: "/whatsapp",
-  },
-  {
-    id: 2,
-    text: "KiK",
-    icon: <SiKik />,
-    path: "/kik",
-  },
-  {
-    id: 3,
-    text: "Telegram",
-    icon: <BsTelegram />,
-    path: "/telegram",
-  },
-  {
-    id: 4,
-    text: "Viber",
-    icon: <FaViber />,
-    path: "/viber",
-  },
-  {
-    id: 5,
-    text: "Tinder",
-    icon: <SiTinder />,
-    path: "/tinder",
-  },
-  {
-    id: 6,
-    text: "Line",
-    icon: <BsLine />,
-    path: "/line",
-  },
-  {
-    id: 7,
-    text: "Snapchat",
-    icon: <FaSnapchat />,
-    path: "/snapchat",
-  },
-  {
-    id: 8,
-    text: "Hangout",
-    icon: <ImHangouts />,
-    path: "/hangout",
-  },
-  {
-    id: 9,
-    text: "Skype",
-    icon: <BsSkype />,
-    path: "/skype",
-  },
-  {
-    id: 10,
-    text: "Instagram Messages",
-    icon: <BsInstagram />,
-    path: "/instagram",
-  },
-  {
-    id: 11,
-    text: "Facebook Tracking",
-    icon: <BsMessenger />,
-    path: "/facebook",
-  },
-];
+// export const SocialNetworks = [
+//   {
+//     id: 1,
+//     text: "Whatsapp",
+//     icon: <BsWhatsapp bg={"#29313c"} />,
+//     path: "/whatsapp",
+//   },
+//   {
+//     id: 2,
+//     text: "KiK",
+//     icon: <SiKik />,
+//     path: "/kik",
+//   },
+//   {
+//     id: 3,
+//     text: "Telegram",
+//     icon: <BsTelegram />,
+//     path: "/telegram",
+//   },
+//   {
+//     id: 4,
+//     text: "Viber",
+//     icon: <FaViber />,
+//     path: "/viber",
+//   },
+//   {
+//     id: 5,
+//     text: "Tinder",
+//     icon: <SiTinder />,
+//     path: "/tinder",
+//   },
+//   {
+//     id: 6,
+//     text: "Line",
+//     icon: <BsLine />,
+//     path: "/line",
+//   },
+//   {
+//     id: 7,
+//     text: "Snapchat",
+//     icon: <FaSnapchat />,
+//     path: "/snapchat",
+//   },
+//   {
+//     id: 8,
+//     text: "Hangout",
+//     icon: <ImHangouts />,
+//     path: "/hangout",
+//   },
+//   {
+//     id: 9,
+//     text: "Skype",
+//     icon: <BsSkype />,
+//     path: "/skype",
+//   },
+//   {
+//     id: 10,
+//     text: "Instagram Messages",
+//     icon: <BsInstagram />,
+//     path: "/instagram",
+//   },
+//   {
+//     id: 11,
+//     text: "Facebook Tracking",
+//     icon: <BsMessenger />,
+//     path: "/facebook",
+//   },
+// ];
 export const InternetUsage = [
   {
     id: 1,
@@ -241,7 +242,17 @@ export const Restricted = [
 const Sidebar = () => {
   const [userID, setUserID] = useState("0001");
   const { width } = useContext(SizeContext);
-  const navigate = useNavigate()
+  const { currentPage, setCurrentPage,setPage } = useContext(RouteTextContext);
+  const navigate = useNavigate();
+
+  // Text Function
+
+ useEffect(()=>{
+  setPage()
+ },[window.location.href])
+
+  // Text Function End
+
   const small = () => {
     return;
   };
@@ -263,7 +274,13 @@ const Sidebar = () => {
           style={{ width: "100%", height: "3.5rem" }}
         >
           <Box w={"40%"} bg={"transparent"}>
-            <Image bg={"transparent"} h={"100%"} w={"100%"} src={logo} alt={"logo"} />
+            <Image
+              bg={"transparent"}
+              h={"100%"}
+              w={"100%"}
+              src={logo}
+              alt={"logo"}
+            />
           </Box>
           <Box
             color={"white"}
@@ -285,6 +302,9 @@ const Sidebar = () => {
           alignSelf={"center"}
           h={"3.5rem"}
           onClick={() => {
+            // setCurrentPage("Dashboard")
+            // console.log(currentPage)
+            // setPage()
             navigate("/");
           }}
         >
@@ -376,7 +396,7 @@ const Sidebar = () => {
                 </Stack>
               </AccordionPanel>
             </AccordionItem>
-            <AccordionItem
+            {/* <AccordionItem
               bg={"#29313c"}
               border={"none"}
               _hover={{ backgroundColor: "#29313c" }}
@@ -410,7 +430,7 @@ const Sidebar = () => {
                     ))}
                 </Stack>
               </AccordionPanel>
-            </AccordionItem>
+            </AccordionItem> */}
             <AccordionItem
               bg={"#29313c"}
               border={"none"}

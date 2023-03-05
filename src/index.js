@@ -7,16 +7,19 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import LoginState from "./Context/LoginState";
 import SizeState from "./Context/SizeState";
+import RouteTextState from "./Context/RouteTextState";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <ChakraProvider>
-      <SizeState>
-      <LoginState>
-        <App />
-      </LoginState>
-      </SizeState>
+      <RouteTextState>
+        <SizeState>
+          <LoginState>
+            <App />
+          </LoginState>
+        </SizeState>
+      </RouteTextState>
     </ChakraProvider>
   </BrowserRouter>
 );

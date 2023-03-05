@@ -21,7 +21,7 @@ ChartJS.register(
   Tooltip
 );
 
-const a = [20, 15, 5, 19];
+const a = [20, 5, 5, 19];
 const b = [10, 17, 9, 25];
 const c = [23, 5, 37, 0];
 const d = [12, 27, 17, 22];
@@ -58,6 +58,7 @@ export const data = {
       pointBorderColor: "aqua",
       fill: true,
       tension: "0.1",
+      fill: "",
     },
     {
       label: "Whatsapp",
@@ -67,6 +68,7 @@ export const data = {
       pointBorderColor: "aqua",
       fill: true,
       tension: "0.1",
+      fill: "",
     },
     {
       label: "Text Message",
@@ -76,6 +78,7 @@ export const data = {
       pointBorderColor: "aqua",
       fill: true,
       tension: "0.1",
+      fill: "",
     },
     {
       label: "GPS Location",
@@ -85,6 +88,7 @@ export const data = {
       pointBorderColor: "aqua",
       fill: true,
       tension: "0.1",
+      fill: "",
     },
   ],
 };
@@ -102,7 +106,7 @@ const Chart = () => {
         w={"100%"}
         margin={"auto"}
         mb={"40px"}
-          // border={"1px solid red"}
+        // border={"1px solid red"}
         boxSizing={"border-box"}
         p={"20px"}
       >

@@ -12,20 +12,20 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginContext from "../../Context/LoginContext";
 
-const url = "https://busy-houndstooth-clam.cyclic.app/employee";
+const url = "https://loginpage-production.up.railway.app/login";
 
 const Login = () => {
   const { loginStatus, setLoginStatus } = useContext(LoginContext);
-  let getUserData = async () => {
-    try {
-      let res = await fetch(url);
-      let user = await res.json();
-      // console.log(user);
-      setData(user);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // let getUserData = async () => {
+  //   try {
+  //     let res = await fetch(url);
+  //     let user = await res.json();
+  //     // console.log(user);
+  //     setData(user);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
   const [otpInp, setOtpInp] = useState("");
   const [passInp, setPassInp] = useState("");
   const [email, setEmail] = useState("");
@@ -35,32 +35,70 @@ const Login = () => {
   let attempt = 1;
   const [data, setData] = useState([]);
   const otp = "1234";
-  const hide = () => {
-    alert(`OTP sent to ${email}`);
-    let sendOTPAgain = document.getElementById("sendOTPAgain");
-    let unhide = document.getElementById("verifyButton");
-    let otpInput = document.getElementById("otpInput");
-    unhide.style.zIndex = "10";
-    sendOTPAgain.style.display = "flex";
-    otpInput.style.display = "block";
-  };
+  // const hide = () => {
+  //   alert(`OTP sent to ${email}`);
+  //   let sendOTPAgain = document.getElementById("sendOTPAgain");
+  //   let unhide = document.getElementById("verifyButton");
+  //   let otpInput = document.getElementById("otpInput");
+  //   unhide.style.zIndex = "10";
+  //   sendOTPAgain.style.display = "flex";
+  //   otpInput.style.display = "block";
+  // };
 
+  const getData=async()=>{
+    let res = await fetch(url)
+    res = await res.json()
+    console.log(res)
+  }
+  const login = async () => {
+    let obj = {
+      email: email,
+      password: passInp,
+    };
+    obj = JSON.stringify(obj);
+    console.log(obj)
+    try {
+      let res = await fetch(url, {
+        method: "POST",
+        body: obj,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      res = await res.json();
+      console.log(res.message);
+      if (res.message === "login successfully") {
+        // console.log("Yes");
+        success()
+      } else if (res.message === "please fill details properly") {
+        // console.log("No");
+        alert("Fill Details")
+
+      }else if(res.message === "you don`t have an acount please signUp"){
+        // console.log("Try")
+        alert("Not have an account Signup")
+        navigate("/signup")
+      }
+      // success()
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const obj = {
     email: "1",
     password: "2",
   };
-  const changeStatus =()=>{
+  const changeStatus = () => {
     setLoginStatus(true);
-  }
+  };
   const success = () => {
     alert("Login successful!");
-    changeStatus()
-    console.log(loginStatus)
+    changeStatus();
+    console.log(loginStatus);
     localStorage.setItem("Login", JSON.stringify(loginStatus));
     navigate("/");
     // window.location.reload()
   };
-  const nav = () => {};
   const failure = () => {
     if (attempt !== 3) {
       alert(`Wrong OTP ${3 - attempt} are remaning`);
@@ -71,87 +109,88 @@ const Login = () => {
     }
     // navigate("/")
   };
-  const sendOTP = () => {
-    // email === "" ? alert("Enter a Email") : hide();
-    // if (email === user.email && passInp === user.password) {
-    //   hide();
-    // } else if (email === "") {
-    //   alert("Enter a Email");
-    // } else {
-    //   alert("Not a Valid User");
-    // }
+  // const sendOTP = () => {
+  //   // email === "" ? alert("Enter a Email") : hide();
+  //   // if (email === user.email && passInp === user.password) {
+  //   //   hide();
+  //   // } else if (email === "") {
+  //   //   alert("Enter a Email");
+  //   // } else {
+  //   //   alert("Not a Valid User");
+  //   // }
 
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].email === email) {
-        validUser = true;
-        if (data[i].email === email && data[i].password === passInp) {
-          hide();
-          // break;
-          return;
-        } else {
-          alert("Wrong credentials");
-          return;
-        }
-      } else if (email === "") {
-        alert("Enter an Email Address");
-      } else {
-        // alert("Not a Valid User");
-        validUser = false;
-      }
-    }
-    if (validUser === false) {
-      alert("Not a valid User");
-    }
-    // console.log(user);
-  };
+  //   // for (let i = 0; i < data.length; i++) {
+  //   //   if (data[i].email === email) {
+  //   //     validUser = true;
+  //   //     if (data[i].email === email && data[i].password === passInp) {
+  //   //       hide();
+  //   //       // break;
+  //   //       return;
+  //   //     } else {
+  //   //       alert("Wrong credentials");
+  //   //       return;
+  //   //     }
+  //   //   } else if (email === "") {
+  //   //     alert("Enter an Email Address");
+  //   //   } else {
+  //   //     // alert("Not a Valid User");
+  //   //     validUser = false;
+  //   //   }
+  //   // }
+  //   // if (validUser === false) {
+  //   //   alert("Not a valid User");
+  //   // }
+  //   // console.log(user);
+  // };
 
-  const verifyOTP = () => {
-    //   if(userdata.username===username){
-    //     if(userdata.username===username && userdata.password===password){
-    //         login = true
-    //         localStorage.setItem('login',JSON.stringify(login))
-    //         alert('Login successful!')
-    //         return login;
-    //         // break;
-    //     }else if(userdata.username!==username || userdata.password!==password){
-    //         alert('Wrong credentials')
+  // const verifyOTP = () => {
+  //   //   if(userdata.username===username){
+  //   //     if(userdata.username===username && userdata.password===password){
+  //   //         login = true
+  //   //         localStorage.setItem('login',JSON.stringify(login))
+  //   //         alert('Login successful!')
+  //   //         return login;
+  //   //         // break;
+  //   //     }else if(userdata.username!==username || userdata.password!==password){
+  //   //         alert('Wrong credentials')
 
-    //         // break;
-    //     }
-    // }
-    // else if(userdata.username!==username){
-    //     alert("User doesn't exist, Sign Up")
-    //     // break;
-    // }
+  //   //         // break;
+  //   //     }
+  //   // }
+  //   // else if(userdata.username!==username){
+  //   //     alert("User doesn't exist, Sign Up")
+  //   //     // break;
+  //   // }
 
-    // data.forEach((el) => {
-    //   if (el.email === email) {
-    //     // if (el.email === email && el.password === passInp) {
-    //     //   alert("Login successful!");
-    //     //   // break;
-    //     // } else {
-    //     //   alert("Wrong credentials");
-    //     //   // return;
-    //     // }
+  //   // data.forEach((el) => {
+  //   //   if (el.email === email) {
+  //   //     // if (el.email === email && el.password === passInp) {
+  //   //     //   alert("Login successful!");
+  //   //     //   // break;
+  //   //     // } else {
+  //   //     //   alert("Wrong credentials");
+  //   //     //   // return;
+  //   //     // }
 
-    //     return setUser(el);
-    //   } else {
-    //     // return setUser({})
-    //   }
-    //   // else if (
-    //   //   el.email === data[data.length - 1].email &&
-    //   //   el.email !== email
-    //   // ) {
-    //   //   alert("User doesn't exist, Sign Up");
-    //   //   return;
-    //   // }
-    // });
+  //   //     return setUser(el);
+  //   //   } else {
+  //   //     // return setUser({})
+  //   //   }
+  //   //   // else if (
+  //   //   //   el.email === data[data.length - 1].email &&
+  //   //   //   el.email !== email
+  //   //   // ) {
+  //   //   //   alert("User doesn't exist, Sign Up");
+  //   //   //   return;
+  //   //   // }
+  //   // });
 
-    otpInp === otp ? success() : failure();
-  };
+  //   otpInp === otp ? success() : failure();
+  // };
   useEffect(() => {
-    getUserData();
-    changeStatus()
+    // getUserData();
+    // getData()
+    changeStatus();
   }, [loginStatus]);
   return (
     <Stack
@@ -333,11 +372,11 @@ const Login = () => {
             colorScheme={"green"}
             color={"#e5e5e5"}
             width={"80%"}
-            onClick={() => sendOTP()}
+            onClick={() => login()}
           >
             Login
           </Button>
-          <Button
+          {/* <Button
             zIndex={-10}
             left={"0"}
             right={"0"}
@@ -350,7 +389,7 @@ const Login = () => {
             onClick={() => verifyOTP()}
           >
             Verify OTP
-          </Button>
+          </Button> */}
         </Box>
         <Flex
           // bg={"#e5e5e5"}
@@ -392,7 +431,7 @@ const Login = () => {
         >
           <path
             fill="#47e093"
-            fill-opacity="1"
+            fillOpacity="1"
             d="M0,32L80,58.7C160,85,320,139,480,170.7C640,203,800,213,960,208C1120,203,1280,181,1360,170.7L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
           ></path>
         </svg>
